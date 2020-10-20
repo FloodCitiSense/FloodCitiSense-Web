@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  floodcitisense-ui:
+    image: floodcitisense-ui
+    build: .
+    ports:
+      - 3001:80

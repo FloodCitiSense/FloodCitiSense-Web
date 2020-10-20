@@ -1,0 +1,387 @@
+{
+  "//": "fr francais",
+  "lng": {
+    "english": "Anglais",
+    "french": "Français",
+    "dutch": "Néerlandais",
+    "greek": "Grec"
+  },
+  "nav": {
+    "login": "Se connecter",
+    "signup": "S’inscrire",
+    "account": "Compte",
+    "editProfile": "Editer le profil",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "logout": "Déconnexion",
+    "areYouSure": "Êtes-vous sûr?"
+  },
+  "range": {
+    "last24Hours": "Les dernières 24 heures",
+    "lastDay": "Le Dernier jour",
+    "last3Days": "Les 3 derniers jours",
+    "lastWeek": "La semaine dernière",
+    "last4Weeks": "Les 4 dernières semaines",
+    "lastMonth": "Le mois dernier",
+    "last3Months": "Les 3 derniers mois",
+    "last6Months": "Les 6 derniers mois",
+    "lastYear": "L'année dernière",
+    "all": "TOUS (30 dernières années)",
+    "customRange": " Du … au …",
+    "daily": "Quotidien",
+    "hourly": "Toutes les heures",
+    "weekly": "Hebdomadaire"
+  },
+  "gmap": {
+    "mapType": "Type de carte",
+    "type": {
+      "roadmap": "Par défaut",
+      "satellite": "Satellite",
+      "hybrid": "Hybride",
+      "terrain": "Topographie"
+    },
+    "lon": "Longitude",
+    "lat": "Latitude ",
+    "drag": "Déplacer ",
+    "err1": "Les services de localisation sont désactivés dans votre navigateur. Veuillez activer cette fonctionnalité.",
+    "err2": "Votre navigateur ne supporte pas les services de localisation. Veuillez spécifier votre emplacement manuellement.",
+    "operate": "Faites glisser l’onglet pour signaler l'emplacement !"
+  },
+  "sidemenu": {
+    "fcs": "FCS",
+    "floodCitiSense": "FloodCitiSense",
+    "editProfile": "Editer le profil",
+    "editProfileAbbr": "EP",
+    "resetProfile": "Réinitialiser le profil",
+    "resetProfileAbbr": "RP",
+    "rainfallSensors": "Pluviomètres",
+    "floodMenu1": "RAPPORTS DE PRÉCIPITATIONS",
+    "floodMenu2": "ET D'INONDATIONS",
+    "about": "À propos",
+    "ews": "Système d'alerte préventif",
+    "smpn": "Envoyer une notification",
+    "visitors": "visiteuses",
+    "//_NewTxt_01": ""
+  },
+  "sensor": {
+    "pageTitle": "Pluviomètres FloodCitiSense",
+    "filter": {
+      "title": "TypeType de pluviomètre",
+      "allReduce": "TOUS (- AUTRES)",
+      "all": "TOUS",
+      "fcs": "FloodCitiSense",
+      "ea": "Environment Agency",
+      "kn": "KNMI",
+      "na": "Autres",
+      "flowbru": "Flowbru‎"
+    },
+    "table": {
+      "title": "Pluviomètres",
+      "column": {
+        "type": "Type",
+        "sensorID": "ID du capteur",
+        "action": "Action",
+        "typeID": "ID de type"
+      }
+    },
+    "map": {
+      "warning": {
+        "noRainfallData": "Pas de données de précipitations"
+      },
+      "chart": {
+        "title": "Précipitations (mm) du pluviomètre ID"
+      },
+      "btn": {
+        "openBigChart": "Ouvrir grand graphique",
+        "exportData": "Exporter des données"
+      }
+    }
+  },
+  "incident": {
+    "pageTitle": "Rapports FloodCitiSense sur les précipitations et les inondations",
+    "type": {
+      "rainfall": {
+        "noRainfall": "Pas de pluie",
+        "drizzle": "Bruine",
+        "mediumIntensity": "Pluie normale",
+        "heavyRainfall": "Pluie abondante",
+        "torrential": "Pluie torrentielle"
+      },
+      "flooding": {
+        "noFlooding": "Aucune inondation",
+        "streetFlooding": "Rue inondée",
+        "parksFlooding": "Parc inondé",
+        "houseFlooding": "Maison inondée",
+        "gardenFlooding": "Jardin inondé",
+        "riverFlooding": "Rivière en crue",
+        "riverLevelRising": "Hausse du niveau de la rivière",
+        "sewerBlocked": "Égout bouché"
+      },
+      "floodExtent": {
+        "small": "Partiellement inondé",
+        "half": "À moitié inondé",
+        "completely": "Complètement inondé"
+      },
+      "floodDepth": {
+        "2": "Mes pieds sont mouillés (<2 cm)",
+        "10": "Jusqu'aux chevilles (<10 cm)",
+        "25": "Jusqu'aux tibias (<25 cm)",
+        "50": "Jusqu'aux genoux (<50 cm)",
+        "higher": "Plus de 50 cm"
+      },
+      "floodFrequency": {
+        "first": "Première inondation",
+        "occasionally": "Inondations occasionnelle",
+        "regularly": "Inondations régulière",
+        "non": "Je ne sais pas"
+      },
+      "spaceFlooded": {
+        "private": "Privé",
+        "public": "Public",
+        "both": "Tous les deux"
+      },
+      "waterClarity": {
+        "clear": "Claire",
+        "muddy": "Trouble",
+        "sewage": "Sale"
+      }
+    },
+    "table": {
+      "title": "Rapports de précipitations et d'inondations",
+      "column": {
+        "action": "Action",
+        "date": "Date",
+        "flooding": "Type d'inondation",
+        "id": "ID",
+        "rainfall": "Type de pluie",
+        "test": "Test"
+      },
+      "addBtnText": "Signaler un incident",
+      "addBtnToolTip": "Ajouter des rapports de précipitations et d'inondations",
+      "//_NewTxt_03": "\""
+    },
+    "report": {
+      "by": "par",
+      "clarity": "Clarté de l’eau",
+      "damage": "Des signes de dommages?",
+      "depth": "Niveau de l’eau",
+      "extent": "Ampleur de l'inondation",
+      "frequency": "Fréquence de l'inondation",
+      "impacted": "Êtes-vous impacté par l’inondation ?",
+      "obstruction": "Des signes d’obstruction?",
+      "reported": "Signalé",
+      "spaceFlooded": "Type d’espace inondé",
+      "pos": "Position"
+    },
+    "btn": {
+      "myReport": "Mes rapports(en blue)",
+      "upload": "Télécharger",
+      "uploadPic": "Charger une photo",
+      "uploadedPic": "Image téléchargée",
+      "moveloc": "Déplacer vers l'emplacement"
+    },
+    "msg": {
+      "uploadPic": "Veuillez attendre que l'image soit téléchargée...",
+      "uploadRep": "Veuillez attendre que le rapport soit téléchargé...",
+      "select": "Sélection de l’endroit ",
+      "completed": "Téléchargement terminé",
+      "failed": "Échec du téléchargement",
+      "revert": "Vous ne pourrez pas la récupérer!",
+      "delit": "Supprime-le!",
+      "delsuc": "Supprimé avec succès",
+      "delfail": "Erreur supprimée!",
+      "photoLimit": "La taille maximale des photos téléchargées est de 2 MB",
+      "selectPhoto": "Veuillez sélectionner un fichier image"
+    }
+  },
+  "login": {
+    "pageTitle": "Connexion à FloodCitiSense",
+    "userNameOrEmail": "Nom d’utilisateur ou Email",
+    "password": "Mot de passe",
+    "or": "OU",
+    "singinGoogle": "Connectez-vous avec Google+",
+    "singinFacebook": "Connectez-vous avec Facebook",
+    "registerNewMember": "Créer un nouveau compte",
+    "forgetPassword": "J'ai oublié mon mot de passe",
+    "checkUser": "Veuillez entrer un Nom d’utilisateur ou un Email",
+    "checkpwd": "Veuillez entrer le mot de passe",
+    "title": "Connectez-vous pour commencer votre session",
+    "success": "Connexion réussie",
+    "failed": "Nom d'utilisateur ou mot de passe invalide",
+    "forgotpwd": "Mot de passe oublié",
+    "//_NewTxt_04": ""
+  },
+  "pwdreset": {
+    "pageTitle": "FloodCitiSense Réinitialisez votre mot de passe ",
+    "title": "Entrez l'adresse e-mail associée à votre compte et nous vous enverrons un lien de réinitialisation de mot de passe.",
+    "btnSend": "Envoyer un e-mail de réinitialisation du mot de passe",
+    "success": "Consulter votre boite mail pour réinitialiser votre mot de passe. Si le mail n'apparaît pas dans quelques minutes, vérifiez votre dossier spam.",
+    "//_NewTxt_05": ""
+  },
+  "signup": {
+    "pageTitle": "Création d’un compte FloodCitiSense",
+    "title": "LaLa création d'un compte gratuit vous permet d'ajouter des alertes d'inondation et de voir votre propre rapport.",
+    "userName": "Nom d'utilisateur",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "emailAddress": "Adresse électronique",
+    "experienceTitle": "Quelle expérience avez-vous avec la science citoyenne?",
+    "none": "Novice",
+    "some": "Initié",
+    "expert": "Expert",
+    "tpTitle": "Je consens aux",
+    "tc": "Termes et Conditions",
+    "and": "et",
+    "pp": "la politique de confidentialité",
+    "createAccount": "Create Account",
+    "alreadyMember": "J’ai déjà un compte",
+    "success": "Vous vous êtes bien inscrit! Veuillez vous connecter pour démarrer votre session",
+    "failed": "Échec de l'enregistrement!"
+  },
+  "profile": {
+    "pageTitle": "Modifier le profil FloodCitiSense",
+    "title": "Mettre à jour mon profil personnel",
+    "phone": "Numéro de téléphone",
+    "update": "Mettre à jour le profil",
+    "success": "Mise à jour du profil réussie!",
+    "failed": "La mise à jour du profil a échoué!"
+  },
+  "pwd": {
+    "pageTitle": "Changer le mot de passe FloodCitiSense",
+    "title": "Changer le mot de passe",
+    "currentPwd": "Mot de passe actuel",
+    "newPwd": "Nouveau mot de passe",
+    "repPwd": "Répété le nouveau mot de passe",
+    "update": "Mettre à jour le mot de passe",
+    "success": "Mot de passe changé avec succès!",
+    "failed": "La mise à jour en mot de passe a échoué!",
+    "notsame": "Les deux mots de passe ne sont pas identiques !"
+  },
+  "btn": {
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "edit": "Modifier",
+    "new": "Nouveau",
+    "editReport": "Modifier le rapport",
+    "delReport": "Supprimer le rapport",
+    "locate": "Localiser",
+    "no": "NON",
+    "ok": "OK",
+    "save": "Sauvegarder",
+    "signIn": "Se connecter",
+    "viewDetail": "Voir les détails",
+    "yes": "OUI",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "saveAndUpload": "Enregistrer et télécharger",
+    "download": "Télécharger",
+    "copy": "copie",
+    "//_NewTxt_06": ""
+  },
+  "about": {
+    "title": "À propos FloodCitiSense",
+    "content": {
+      "one": "Environ 500 millions de personnes vivent dans des villes d'Europe, dont la plupart sont extrêmement vulnérables aux phénomènes météorologiques extrêmes, comme le prouvent les récentes inondations pluviales et fluviales dans le nord et le centre de l'Europe, qui ont causé des dommages et des pertes considérables, pour des milliards d'euros. Les inondations pluviales se produisent lorsque les fortes précipitations dépassent la capacité du système de drainage d’une ville. En raison de leur rapidité et de leur nature localisée, ces inondations causent des dommages importants aux environnements urbains et sont difficiles à gérer.",
+      "two": "Le projet FloodCitiSense vise à mettre en place un service d’alerte rapide en cas d’inondation en zone urbaine. Il s'appuie sur les connaissances, les méthodologies et les technologies intelligentes avancées fournies par les unités de recherche et les entreprises privées pour créer un service public innovant qui réduit la vulnérabilité des zones urbaines et des citoyens aux inondations pluviales.",
+      "three": "Cette application Web FloodCitiSense vous permet d’afficher des données sur les précipitations issues de réseaux de capteurs officiels, par exemple de la UK Environment Agency, ainsi que de capteurs à faible coût déployés par les citoyens. Il vous permet également de consulter les rapports d'inondation et de précipitations rédigés par les citoyens à l'aide de l'application mobile FloodCitiSense."
+    },
+    "download": {
+      "title": "Vous pouvez télécharger l'application mobile à partir du",
+      "googlePlay": "Google PlayStore：",
+      "appleStore": "Apple AppStore：",
+      "moreinfo": "Pour plus d'informations, voir "
+    }
+
+  },
+  "footer": {
+    "aboutUs": "À propos de nous",
+    "design": "2019 Conçu par",
+    "designOrg": "FloodCitiSense",
+    "code": "Code par",
+    "codeOrg": "FloodCitiSense"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "google": "Google"
+  },
+  "ews": {
+    "//_NewTxt_ews": "",
+    "pageTitle": "Système d'alerte préventif",
+    "filter": {
+      "rotterdam": "Rotterdam",
+      "brussels": "Bruxelles",
+      "birmingham": "Birmingham"
+    },
+    "table": {
+      "title": "Liste des fonctionnalités",
+      "column": {
+        "id": "ID",
+        "name": "Nom"
+      }
+    },
+    "map": {
+      "chart": {
+        "title": "Probabilité d'inondation "
+      }
+    }
+  },
+  "smpn": {
+    "pageTitle": "Envoyer une notification push mobile",
+    "table": {
+      "title": "Historique des notifications",
+      "date": "Date",
+      "tag": "Étiquette"
+    },
+    "form": {
+      "title": "Titre",
+      "formTitle": "Message de notification",
+      "message": "Message",
+      "fotmTitle2": "Sélectionnez le pays et la langue",
+      "country": "Pays",
+      "language": "Langue",
+      "tag": "Étiquette de notification personnalisée",
+      "sent": "Envoyer une notification"
+    },
+    "opt": {
+      "country": {
+        "Belgium": "Belgique",
+        "UnitedKingdom": "Royaume-Uni",
+        "Netherlands": "Les Pays-Bas",
+        "Austria": "L'Autriche"
+      },
+      "language": {
+        "English": "Anglais",
+        "French": "Français",
+        "Spanish": "Espagnol",
+        "Dutch": "Néerlandais",
+        "German": "Allemand",
+        "Greek": "Grec"
+      }
+    },
+    "msg": {
+      "empty": " est vide",
+      "over100": " plus de 100 caractères",
+      "over300": " plus de 300 caractères",
+      "suucess": "Message envoyé avec succès!",
+      "all": "Tout",
+      "view": "Voir"
+    },
+    "//_NewTxt_07": ""
+  },
+  "table": {
+    "sEmptyTable": "Aucune donnée disponible dans le tableau",
+    "sInfo": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+    "sInfoEmpty": "Affichage de l'élément 0 à 0 sur 0 élément",
+    "sInfoFiltered": "(filtré à partir de _MAX_ éléments au total)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ",",
+    "sLengthMenu": "Afficher _MENU_ éléments",
+    "sLoadingRecords": "Chargement...",
+    "sProcessing": "Traitement...",
+    "sSearch": "Rechercher :",
+    "sZeroRecords": "Aucun élément correspondant trouvé",
+    "oAria": {
+      "sSortAscending": ": activer pour trier la colonne par ordre croissant",
+      "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+    }
+  }
+}

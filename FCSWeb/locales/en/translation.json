@@ -1,0 +1,387 @@
+{
+  "//": "en english",
+  "lng": {
+    "english": "English",
+    "french": "French",
+    "dutch": "Dutch",
+    "greek": "Greek"
+  },
+  "nav": {
+    "login": "Login",
+    "signup": "Sign up",
+    "account": "Account",
+    "editProfile": "Edit Profile",
+    "resetPassword": "Reset Password",
+    "logout": "Logout",
+    "areYouSure": "Are you sure?"
+  },
+  "range": {
+    "last24Hours": "Last 24 Hours",
+    "lastDay": "Last Day",
+    "last3Days": "Last 3 Days",
+    "lastWeek": "Last Week",
+    "last4Weeks": "Last 4 Weeks",
+    "lastMonth": "Last Month",
+    "last3Months": "Last 3 Months",
+    "last6Months": "Last 6 Months",
+    "lastYear": "Last Year",
+    "all": "ALL (Last 30 Years)",
+    "customRange": "Custom Range",
+    "daily": "Daily",
+    "hourly": "Hourly",
+    "weekly": "Weekly"
+  },
+  "gmap": {
+    "mapType": "Map Type",
+    "type": {
+      "roadmap": "Roadmap",
+      "satellite": "Satellite",
+      "hybrid": "Hybrid",
+      "terrain": "Terrain"
+    },
+    "lon": "Longitude",
+    "lat": "Latitude ",
+    "drag": "Drag me!",
+    "err1": "Location services is not activated in your browser. Please enable this feature.",
+    "err2": "Your browser does not support Location Services. Please specify your location manually.",
+    "operate": "Drag maker to report location!"
+  },
+  "sidemenu": {
+    "fcs": "FCS",
+    "floodCitiSense": "FloodCitiSense",
+    "editProfile": "Edit Profile",
+    "editProfileAbbr": "EP",
+    "resetProfile": "Reset Password",
+    "resetProfileAbbr": "RP",
+    "rainfallSensors": "Rainfall Sensors",
+    "floodMenu1": "RAINFALL AND",
+    "floodMenu2": "FLOOD REPORTS",
+    "about": "About",
+    "ews": "Early Warning System",
+    "smpn": "Send Notification",
+    "visitors": "Visitors",
+    "//_NewTxt_01": ""
+  },
+  "sensor": {
+    "pageTitle": "FloodCitiSense Rainfall Sensors",
+    "filter": {
+      "title": "Sensor Type",
+      "allReduce": "ALL (- OTHERS)",
+      "all": "ALL",
+      "fcs": "FloodCitiSense",
+      "ea": "Environment Agency",
+      "kn": "KNMI",
+      "na": "Others",
+      "flowbru": "Flowbru‎"
+    },
+    "table": {
+      "title": "Rainfall Sensors",
+      "column": {
+        "type": "Type",
+        "sensorID": "Sensor ID",
+        "action": "Action",
+        "typeID": "Type ID"
+      }
+    },
+    "map": {
+      "warning": {
+        "noRainfallData": "No rainfall data"
+      },
+      "chart": {
+        "title": "Rainfall(mm) from Sensor ID"
+      },
+      "btn": {
+        "openBigChart": "Open Large Chart",
+        "exportData": "Export Data"
+      }
+    }
+  },
+  "incident": {
+    "pageTitle": "FloodCitiSense Rainfall and Flood Reports",
+    "type": {
+      "rainfall": {
+        "noRainfall": "No rainfall",
+        "drizzle": "Drizzle",
+        "mediumIntensity": "Medium intensity",
+        "heavyRainfall": "Heavy rainfall",
+        "torrential": "Torrential"
+      },
+      "flooding": {
+        "noFlooding": "No flooding",
+        "streetFlooding": "Street flooding",
+        "parksFlooding": "Park flooding",
+        "houseFlooding": "House flooding",
+        "gardenFlooding": "Garden flooding",
+        "riverFlooding": "River flooding",
+        "riverLevelRising": "River level rising",
+        "sewerBlocked": "Sewer blocked"
+      },
+      "floodExtent": {
+        "small": "A small part",
+        "half": "Half flooded",
+        "completely": "Completely flooded"
+      },
+      "floodDepth": {
+        "2": "My feet are wet ( < 2 cm)",
+        "10": "Up to my ankles ( < 10 cm)",
+        "25": "Up to my shins ( < 25 cm)",
+        "50": "Up to my knees ( < 50 cm)",
+        "higher": "Higher than 50 cm"
+      },
+      "floodFrequency": {
+        "first": "First time flood",
+        "occasionally": "Floods occasionally",
+        "regularly": "Floods regularly",
+        "non": "I don't know"
+      },
+      "spaceFlooded": {
+        "private": "Private",
+        "public": "Public",
+        "both": "Both Private & Public"
+      },
+      "waterClarity": {
+        "clear": "Clear",
+        "muddy": "Muddy",
+        "sewage": "Sewage"
+      }
+    },
+    "table": {
+      "title": "Rainfall and Flood Reports",
+      "column": {
+        "action": "Action",
+        "date": "Date",
+        "flooding": "Type of flooding",
+        "id": "ID",
+        "rainfall": "Type of rainfall",
+        "test": "Test"
+      },
+      "addBtnText": "Report an incident",
+      "addBtnToolTip": "Add Rainfall and Flood Reports",
+      "//_NewTxt_03": ""
+    },
+    "report": {
+      "by": "by",
+      "clarity": "Water clarity",
+      "damage": "Signs of damage?",
+      "depth": "Flood depth",
+      "extent": "Flood extent",
+      "frequency": "Flood frequency",
+      "impacted": "Reporter impacted?",
+      "obstruction": "Signs of obstruction?",
+      "reported": "Reported",
+      "spaceFlooded": "Type of space flooded",
+      "pos": "Position"
+    },
+    "btn": {
+      "myReport": "My Reports(shown in blue)",
+      "upload": "Upload",
+      "uploadPic": "Upload picture",
+      "uploadedPic": "Uploaded picture",
+      "moveloc": "Move to location"
+    },
+    "msg": {
+      "uploadPic": "Please wait for the picture to upload...",
+      "uploadRep": "Please wait for the report to upload...",
+      "select": "Place select ",
+      "completed": "Upload completed",
+      "failed": "Upload failed",
+      "revert": "You won't be able to recover this!",
+      "delit": "Delete it!",
+      "delsuc": "Successfully deleted",
+      "delfail": "Deleted error!",
+      "photoLimit": "Photo upload size limit is 2 MB",
+      "selectPhoto": "Please select an image file"
+    }
+  },
+  "login": {
+    "pageTitle": "FloodCitiSense Login ",
+    "userNameOrEmail": "UserName or Email",
+    "password": "Password",
+    "or": "OR",
+    "singinGoogle": "Sign in using Google+",
+    "singinFacebook": "Sign in using Facebook",
+    "registerNewMember": "Register a new account",
+    "forgetPassword": "I forgot my password",
+    "checkUser": "Please input UserName or Email",
+    "checkpwd": "Please input password",
+    "title": "Login to start your session ",
+    "success": "Login successful",
+    "failed": "Invalid user name or password",
+    "forgotpwd": "Forgot Password",
+    "//_NewTxt_04": ""
+  },
+  "pwdreset": {
+    "pageTitle": "FloodCitiSense Reset your password ",
+    "title": "Enter your user account's verified email address and we will send you a password reset link.",
+    "btnSend": "Send password reset email",
+    "success": "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
+    "//_NewTxt_05": ""
+  },
+  "signup": {
+    "pageTitle": "FloodCitiSense Signup",
+    "title": "Creating a free account allows you to add flood alerts and see your own reports",
+    "userName": "User Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "Email Address",
+    "experienceTitle": "How much experience do you have with citizen science?",
+    "none": "None",
+    "some": "Some",
+    "expert": "Expert",
+    "tpTitle": "I consent to the",
+    "tc": "terms and conditions",
+    "and": "and",
+    "pp": "privacy policy",
+    "createAccount": "Create Account",
+    "alreadyMember": "I already have an account",
+    "success": "You have registered successfully! Please login to start your session",
+    "failed": "Registration failed!"
+  },
+  "profile": {
+    "pageTitle": "FloodCitiSense Edit Profile",
+    "title": "Update personal profile",
+    "phone": "Phone Number",
+    "update": "Update Profile",
+    "success": "Profile updated successfully!",
+    "failed": "Profile update failed!"
+  },
+  "pwd": {
+    "pageTitle": "FloodCitiSense Change Password",
+    "title": "Change password",
+    "currentPwd": "Current password",
+    "newPwd": "New password",
+    "repPwd": "Repeat new password",
+    "update": "Update password",
+    "success": "Password succesfully changed!",
+    "failed": "Update to password failed!",
+    "notsame": "The two passwords are not the same!"
+  },
+  "btn": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "edit": "Edit",
+    "new": "New",
+    "editReport": "Edit Report",
+    "delReport": "Delete Report",
+    "locate": "Locate",
+    "no": "NO",
+    "ok": "OK",
+    "save": "Save",
+    "signIn": "Sign in",
+    "viewDetail": "View details",
+    "yes": "YES",
+    "next": "Next",
+    "previous": "Previous",
+    "saveAndUpload": "Save and Upload",
+    "download": "Download",
+    "copy": "Copy",
+    "//_NewTxt_06": ""
+  },
+  "about": {
+    "title": "About FloodCitiSense",
+    "content": {
+      "one": "About 500 million people live in cities in Europe, most of which are critically vulnerable to extreme weather events, as demonstrated by recent pluvial and fluvial flooding in Northern and Central Europe, which has caused massive damage and loss worth billions of euros. Pluvial floods occur when heavy rainfall exceeds the capacity of a city’s drainage system. Due to their fast onset and localized nature, such floods cause significant damage to urban environments and are difficult to manage.",
+      "two": "The FloodCitiSense project aims to develop an urban pluvial flood early warning service. It builds upon state-of-the-art knowledge, methodologies and smart technologies provided by research units and private companies to create an innovative public service that reduces the vulnerability of urban areas and citizens to pluvial floods.",
+      "three": "This FloodCitiSense web app allows you to view rainfall data from official sensor networks, e.g., from the UK Environment Agency, as well as low cost sensors deployed by citizens. It also allows you to view flood and rainfall reports made by citizens using the FloodCitiSense mobile app."
+    },
+    "download": {
+      "title": "You can download the mobile app from",
+      "googlePlay": "Google PlayStore：",
+      "appleStore": "Apple AppStore：",
+      "moreinfo": "For more information, see "
+    }
+
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "design": "2019 Designed by",
+    "designOrg": "FloodCitiSense",
+    "code": "Code by",
+    "codeOrg": "FloodCitiSense"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "google": "Google"
+  },
+  "ews": {
+    "//_NewTxt_ews": "",
+    "pageTitle": "Early Warning System",
+    "filter": {
+      "rotterdam": "Rotterdam",
+      "brussels": "Brussels",
+      "birmingham": "Birmingham"
+    },
+    "table": {
+      "title": "Feature List",
+      "column": {
+        "id": "ID",
+        "name": "Name"
+      }
+    },
+    "map": {
+      "chart": {
+        "title": "Probability of flooding "
+      }
+    }
+  },
+  "smpn": {
+    "pageTitle": "Send Mobile Push Notification",
+    "table": {
+      "title": "Notification Message History",
+      "date": "Date",
+      "tag": "Tag"
+    },
+    "form": {
+      "title": "Title",
+      "formTitle": "Notification Message",
+      "message": "Message",
+      "fotmTitle2": "Select Country and Language",
+      "country": "Country",
+      "language": "Language",
+      "tag": "Custom Notification Tag",
+      "sent": "Send Notification"
+    },
+    "opt": {
+      "country": {
+        "Belgium": "Belgium",
+        "UnitedKingdom": "United Kingdom",
+        "Netherlands": "Netherlands",
+        "Austria": "Austria"
+      },
+      "language": {
+        "English": "English",
+        "French": "French",
+        "Spanish": "Spanish",
+        "Dutch": "Dutch",
+        "German": "German",
+        "Greek": "Greek"
+      }
+    },
+    "msg": {
+      "empty": " is empty",
+      "over100": " over 100 chars",
+      "over300": " over 300 chars",
+      "suucess": "Message successfully sent!",
+      "all": "All",
+      "view": "View"
+    },
+    "//_NewTxt_07": ""
+  },
+  "table": {
+    "sEmptyTable": "No data available in table",
+    "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+    "sInfoEmpty": "Showing 0 to 0 of 0 entries",
+    "sInfoFiltered": "(filtered from _MAX_ total entries)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ",",
+    "sLengthMenu": "Show _MENU_ entries",
+    "sLoadingRecords": "Loading...",
+    "sProcessing": "Processing...",
+    "sSearch": "Search:",
+    "sZeroRecords": "No matching records found",
+    "oAria": {
+      "sSortAscending": ": activate to sort column ascending",
+      "sSortDescending": ": activate to sort column descending"
+    }
+  }
+}

@@ -1,0 +1,603 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title data-i18n="smpn.pageTitle" id="pageTitle">
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.min.css?v=1.4.0" rel="stylesheet" />
+    <!--<link href="assets/css/adminlte.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="assets/js/plugins/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/fcs.css">
+    <link rel="stylesheet" href="assets/js/plugins/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/js/plugins/nouislider.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" />
+    <style>
+        .modal-lg {
+            /*//max-width: 60% !important;*/
+            max-width: 1200px !important;
+            max-height: 900px !important;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 320px;
+            width: 600px;
+            /*height: 35vh;
+            width: 30vw;*/
+        }
+    </style>
+</head>
+
+<body class="sidebar-mini" style="overflow:auto;">
+    <div class="wrapper">
+        <!--     side menu     -->
+        <div class="sidebar" data-color="blue" id="fcsSideBar">
+            <div class="logo">
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-mini"
+                   data-i18n="sidemenu.fcs">
+                </a>
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-normal"
+                   data-i18n="sidemenu.floodCitiSense">
+                </a>
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+                        <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                        <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-wrapper" id="sidebar-wrapper">
+                <div class="user d-none" id="FCSNavUser">
+                    <div class="photo">
+                        <img src="images/missingAvatar.png" />
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            <span>
+                                <span id="fcsSidebarUserName" data-i18n="nav.account"></span>
+                                <b class="caret"></b>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseExample">
+                            <ul class="nav">
+                                <li>
+                                    <a href="Profile.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.editProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.editProfile"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Pwd.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.resetProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.resetProfile"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav" id="fcsSideMenu">
+                    <!--<li>
+                        <a href="Default.html">
+                            <i class="fas fa-map-marked"></i>
+                            <p data-i18n="sidemenu.rainfallSensors"></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Incident.html">
+                            <i class="fas fa-cloud-rain"></i>
+                            <p data-i18n="sidemenu.floodMenu1"></p>
+                            <p style="padding-left:46px;" data-i18n="sidemenu.floodMenu2"></p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="EWS.html">
+                            <i class="fas fa-water"></i>
+                            <p data-i18n="sidemenu.ews"></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="openAboutDlg();">
+                            <i class="fa fa-info-circle"></i>
+                            <p data-i18n="sidemenu.about"></p>
+                        </a>
+                    </li>-->
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="main-panel" id="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="http://floodcitisense.webflow.io/" target="_blank" data-i18n="sidemenu.floodCitiSense"></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+                        <ul class="navbar-nav" id="fcsNav"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="now-ui-icons location_world"></i> <span id="fcsCurrentLng">English</span></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('en'); return false;"><span data-i18n="lng.english"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('fr'); return false;"><span data-i18n="lng.french"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('nl'); return false;"><span data-i18n="lng.dutch"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('el'); return false;"><span data-i18n="lng.greek"> </span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="panel-header" style="height:100px;padding-top: 10px;padding-bottom: 10px;background:#00a99d">
+            </div>
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card ">
+                            <div class="card-header ">
+                                <h5 class="card-title"><span data-i18n="smpn.pageTitle"></span></h5>
+                            </div>
+                            <div class="card-body ">
+
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label"></label>
+
+                                    <div class="col-sm-10  pb-sm-2">
+                                        <span data-i18n="smpn.form.formTitle" class="font-weight-bolder"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label" data-i18n="smpn.form.title"></label>
+
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="smpnTitle" value="Test Title" maxlength="100">
+                                            <!--<input type="text" class="form-control" id="smpnTitle" value="ALERT: Brussels Heavy rain 13/05" maxlength="100">-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label" data-i18n="smpn.form.message"></label>
+
+                                    <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <!--<textarea class="form-control" id="smpnMessage" rows="10" style="border:2px #ccc solid;border-radius:10px;height:200px;" maxlength="300">
+                                            Heavy rain expected tomorrow 14/05 around 10 am over Brussels, be alert to report potential flooding impacts. Also in case no impacts would be observed, it is still relevant to report this. Many thanks in advance.
+                                                                                    </textarea>-->
+                                            <textarea class="form-control" id="smpnMessage" rows="10" style="border:2px #ccc solid;border-radius:10px;height:200px;" maxlength="300">Test Message</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label"></label>
+
+                                    <div class="col-sm-10  pb-sm-2 pt-sm-2">
+                                        <span data-i18n="smpn.form.fotmTitle2" class="font-weight-bolder"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label" data-i18n="smpn.form.country"></label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="selectpicker" data-size="7" data-style="btn btn-info btn-round btn-block" id="smpnCountry">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="col-form-label pr-0 justify-content-center" data-i18n="smpn.form.tag"></label>
+                                        <input type="checkbox" data-style="ios" id="icdCus" class="p-0 m-0" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label" data-i18n="smpn.form.language"></label>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="selectpicker" data-size="7" data-style="btn btn-warning btn-round btn-block" id="smpnLng">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="smpnTag" value="">
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <button type="button" class="btn btn-primary" style="width:200px;" id="icdEditSave" data-i18n="smpn.form.sent"></button>
+                                </div>
+                            </div>
+                            <div class="overlay" style="" id="loading_table">
+                                <i class="fas fa-sync-alt fa-spin"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card ">
+                            <div class="card-header ">
+                                <h5 class="card-title"><span data-i18n="smpn.table.title"></span></h5>
+                            </div>
+                            <div class="card-body ">
+                                <table id="maintable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr style="font-size:12px;">
+                                            <th data-i18n="smpn.table.date"></th>
+                                            <th data-i18n="smpn.form.title"></th>
+                                            <th data-i18n="smpn.form.message"></th>
+                                            <th data-i18n="smpn.table.tag"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr style="font-size:12px;">
+                                            <th data-i18n="smpn.table.date"></th>
+                                            <th data-i18n="smpn.form.title"></th>
+                                            <th data-i18n="smpn.form.message"></th>
+                                            <th data-i18n="smpn.table.tag"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="fcsFooter" style="padding:0;margin:0;"></div>
+    </div>
+
+    <div id="fcsAbout" style="padding:0;margin:0;">
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/plugins/bootstrap-notify.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+    <!--<script src="assets/js/plugins/jquery.dataTables.min.js"></script>-->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/now-ui-dashboard.js?v=1.4.0" type="text/javascript"></script>
+    <script src="assets/js/plugins/sweetalert2.all.min.js"></script>
+    <!-- FCS General purpose JS -->
+
+    <script src="assets/js/plugins/moment.js"></script>
+    <script src="assets/js/plugins/moment-with-locales.js"></script>
+    <script src="assets/js/plugins/moment-timezone.js"></script>
+    <script src="assets/js/plugins/moment-timezone-with-data-2012-2022.js"></script>
+    <script src="assets/js/plugins/chartjs.min.js"></script>
+    <script src="assets/js/plugins/daterangepicker.js"></script>
+    <script src="assets/js/plugins/nouislider.js"></script>
+    <script src="assets/js/plugins/wNumb.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/17.0.6/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.0.0/i18nextXHRBackend.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/3.0.1/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="assets/js/fcsjs.js?v=245"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAPzUobkAIPQhZCzwkEw70Qc_bFA7BBIYo",
+            authDomain: "floodcitisense.firebaseapp.com",
+            databaseURL: "https://floodcitisense.firebaseio.com",
+            projectId: "floodcitisense",
+            storageBucket: "floodcitisense.appspot.com",
+            messagingSenderId: "526829940303",
+            appId: "1:526829940303:web:a654a9f2013ad4df"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <script src="http://api.ipify.org/?format=jsonp&callback=get_viewers_ip">
+    </script>
+
+    <script>
+        {
+            //page init
+            var accessToken = sessionStorage.getItem('accessToken');
+
+            if (accessToken == null) {
+                window.location.href = "Default.html";
+            }
+            var table;
+
+
+            var url = 'https://api.floodcitisense.eu/';
+
+            function langChangeAnchor(lng) {
+                $('body').localize();
+                $('#pageTitle').localize();
+                try { $('#divFooter').localize(); $('#modalAbout').localize(); } catch (ex) { };
+                initNav();
+                if (sessionStorage.getItem('fcs_page_views_count') != null) {
+                    $('#fcsCounter').html('&nbsp;' + i18next.t('sidemenu.visitors') + "：" + sessionStorage.getItem('fcs_page_views_count'));
+                }
+                if (table)
+                    table.destroy();
+                table = $('#maintable').DataTable({
+                    'pagingType': "full_numbers",
+                    'lengthMenu': [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]],
+                    displayLength: 15,
+                    responsive: true,
+                    select: true,
+                    scrollCollapse: true,
+                    paging: true,
+                    order: [[0, 'asc']],
+                    language: {
+                        "sEmptyTable": i18next.t('table.sInfoEmpty'),
+                        "sInfo": i18next.t('table.sInfo'),
+                        "sInfoEmpty": i18next.t('table.sInfoEmpty'),
+                        "sInfoFiltered": i18next.t('table.sInfoFiltered'),
+                        "sInfoPostFix": i18next.t('table.sInfoPostFix'),
+                        "sInfoThousands": i18next.t('table.sInfoThousands'),
+                        "sLengthMenu": i18next.t('table.sLengthMenu'),
+                        "sLoadingRecords": i18next.t('table.sLoadingRecords'),
+                        "sProcessing": i18next.t('table.sProcessing'),
+                        "sSearch": i18next.t('table.sSearch'),
+                        "sZeroRecords": i18next.t('table.sZeroRecords'),
+                        "oAria": {
+                            "sSortAscending": i18next.t('table.oAria.sSortAscending'),
+                            "sSortDescending": i18next.t('table.oAria.sSortDescending')
+                        },
+                        search: '_INPUT_',
+                        //searchPlaceholder: 'Search records',
+                        //"lengthMenu": "Display _MENU_ records per page",
+                        //"zeroRecords": "Nothing found - sorry",
+                        //"info": "Showing page _PAGE_ of _PAGES_",
+                        //"infoEmpty": i18next.t('table.sInfoEmpty'),
+                        //"infoFiltered": "(filtered from _MAX_ total records)",
+                        //info: '_START_-_END_/_TOTAL_',
+                        //search: '_INPUT_',
+                        //searchPlaceholder: 'Search records Apply Apply',
+                        //info: '_START_-_END_/_TOTAL_',
+                        paginate: {
+                            "first": '<i class="fa fa-backward"></i>',
+                            "last": '<i class="fa fa-forward"></i>',
+                            "next": '<i class="fa fa-step-forward"></i>',
+                            "previous": '<i class="fa fa-step-backward"></i>'
+                        }
+                    },
+                    'columns': [
+                        { data: "date" },
+                        { data: "messageTitle" },
+                        { data: "message" },
+                        { data: "tags" }
+                    ]
+                    ,
+                    'rowCallback': function (row, data, index) {
+                        $('td:eq(0)', row).html(moment(data.date).format("YYYY/MM/DD HH:mm"));
+
+                    }
+                });
+                $('#fcsSMPN').addClass('active');
+                $('#smpnCountry').attr("title", i18next.t('smpn.form.country')).append(
+                    $('<option>').attr('value', 'BE').html(i18next.t('smpn.opt.country.Belgium')).attr('selected', 'selected')
+                ).append(
+                    $('<option>').attr('value', 'NL').html(i18next.t('smpn.opt.country.Netherlands'))
+                ).append(
+                    $('<option>').attr('value', 'GB').html(i18next.t('smpn.opt.country.UnitedKingdom'))
+                ).append(
+                    $('<option>').attr('value', 'AT').html(i18next.t('smpn.opt.country.Austria'))
+                );
+                //$("#smpnCountry").append('<option value="' + '12312' + '">' + '123212' + '</option>');
+
+                $("#smpnCountry").selectpicker("refresh");
+                $('#smpnLng').attr("title", i18next.t('smpn.form.language')).append(
+                    $('<option>').attr('value', 'en').html(i18next.t('smpn.opt.language.English')).attr('selected', 'selected')
+                ).append(
+                    $('<option>').attr('value', 'fr').html(i18next.t('smpn.opt.language.French'))
+                ).append(
+                    $('<option>').attr('value', 'es').html(i18next.t('smpn.opt.language.Spanish'))
+                ).append(
+                    $('<option>').attr('value', 'nl').html(i18next.t('smpn.opt.language.Dutch'))
+                ).append(
+                    $('<option>').attr('value', 'de').html(i18next.t('smpn.opt.language.German'))
+                ).append(
+                    $('<option>').attr('value', 'el').html(i18next.t('smpn.opt.language.Greek'))
+                );
+                $("#smpnLng").selectpicker("refresh");
+                $("#icdCus").bootstrapToggle({
+                    on: i18next.t("btn.yes"), off: i18next.t("btn.no"), onstyle: "success",
+                    offstyle: "danger", style: 'ios', width: 100, height: 17
+                }).change(cusChange);
+                cusTag();
+                loadHistory();
+            }
+            function cusTag() {
+                $('#smpnTag').val('').val($('#smpnCountry').val() + "-" + $('#smpnLng').val());
+            }
+
+            function cusChange() {
+                if ($("#icdCus").prop('checked')) {
+                    $('#smpnTag').removeAttr('disabled');
+                }
+                else {
+                    $('#smpnTag').attr('disabled', 'disabled');
+                }
+            }
+
+            function setNotification() {
+                if (isEmpty($('#smpnTitle').val())) {
+                    fcsAlert('', i18next.t('smpn.form.title') + " " + i18next.t('smpn.msg.empty'), 'warning');
+                    return false;
+                }
+                else if ($('#smpnTitle').val().trim().length > 100) {
+                    fcsAlert('', i18next.t('smpn.form.title') + " " + i18next.t('smpn.msg.over100'), 'warning');
+                    return false;
+                }
+                var msgContent = $('#smpnMessage').val().trim().replace(/\n/g, '');
+
+                if (isEmpty(msgContent)) {
+                    fcsAlert('', i18next.t('smpn.form.message') + " " + i18next.t('smpn.msg.empty'), 'warning');
+                    return false;
+                } else if (msgContent.length > 300) {
+                    fcsAlert('', i18next.t('smpn.form.message') + " " + i18next.t('smpn.msg.over300'), 'warning');
+                    return false;
+                }
+                $('#loading_table').show();
+                var postData = new Object();
+                postData.tenantId = 0;
+                postData.date = moment().tz('Europe/London').format();
+                postData.messageTitle = $('#smpnTitle').val();
+                postData.message = msgContent;
+                postData.tags = $('#smpnTag').val();
+                postData.id = parseInt(sessionStorage.getItem('fcs_id'), 10);
+                //console.log(postData);
+                //console.log(sessionStorage.getItem('accessToken'));
+                $.ajax({
+                    url: url + 'api/services/app/MobilePushNotificationService/Send',
+                    type: 'POST',
+                    beforeSend: function (request) {
+                        request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json').setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('accessToken'));
+                    },
+                    data: JSON.stringify(postData),
+                    //dataType: 'json',
+                    processData: false,
+                    contentType: 'application/json',
+
+                    success: function (r) {
+                        if (r.success) {
+                            $('#loading_table').hide();
+                            fcsAlert('', i18next.t('smpn.msg.suucess'), 'success');
+                        } else {
+                            $('#loading_table').hide();
+                            fcsAlert('', r.result.message, 'warning');
+                        }
+                        loadHistory();
+                    },
+
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('#loading_table').hide();
+                        //console.log(xhr);
+                        if (xhr.readyState == 4) {
+                            fcsAlert('', xhr.responseJSON.error.message, 'warning');
+                        }
+
+                    }
+                });
+            }
+
+            function loadHistory() {
+                $.ajax({
+                    url: url + 'api/services/app/MobilePushNotificationService/GetByUserId',
+                    type: 'GET',
+                    beforeSend: function (request) {
+                        request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json').setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('accessToken'));
+                    },
+                    data: {
+                        "id": parseInt(sessionStorage.getItem('fcs_id'), 10)
+                    },
+                    //dataType: 'json',
+                    processData: false,
+                    contentType: 'application/json',
+
+                    success: function (r) {
+                        //console.log(r.result);
+                        table.rows().remove();
+                        table.rows.add(r.result.items);
+                        table.columns.adjust().draw();
+                    },
+
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('#loading_table').hide();
+                        //console.log(xhr);
+                        if (xhr.readyState == 4) {
+                            fcsAlert('', xhr.responseJSON.error.message, 'warning');
+                        }
+
+                    }
+                });
+            }
+
+            $(document).ready(function () {
+                $('#loading_table').hide();
+                $('#fcsFooter').load("FCSFooter.html", function () {
+                    try { $('#divFooter').localize(); } catch (ex) { };
+                });
+                $('#fcsAbout').load("FCSAbout.html", function () {
+                    try { $('#modalAbout').localize(); } catch (ex) { };
+                });
+
+                $('[data-toggle="tooltip"]').tooltip();
+
+
+                initI18next();
+
+                $('#smpnCountry,#smpnLng').on('change', function (e) {
+                    e.preventDefault();
+                    cusTag();
+                    return false;
+                });
+
+
+                $('#icdEditSave').click(function (event) {
+                    setNotification();
+                    return false;
+                });
+                $('#smpnTag').attr('disabled', 'disabled');
+
+                $('.fixed-plugin a').click(function (event) {
+                    // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        }
+                        else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                });
+
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>

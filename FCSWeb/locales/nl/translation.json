@@ -1,0 +1,387 @@
+{
+  "//": "ne dutch",
+  "lng": {
+    "english": "Engels",
+    "french": "Frans",
+    "dutch": "Nederlands",
+    "greek": "Grieks"
+  },
+  "nav": {
+    "login": "Log in",
+    "signup": "Registreren",
+    "account": "Account",
+    "editProfile": "Bewerk profiel",
+    "resetPassword": "Reset wachtwoord",
+    "logout": "Uitloggen",
+    "areYouSure": "Weet je het zeker?"
+  },
+  "range": {
+    "last24Hours": "Laatste 24 uur",
+    "lastDay": "Laatste dag",
+    "last3Days": "Laatste 3 dagen",
+    "lastWeek": "Vorige week",
+    "last4Weeks": "Laatste 4 weken",
+    "lastMonth": "Vorige maand",
+    "last3Months": "Laatste 3 maanden",
+    "last6Months": "Laatste 6 maanden",
+    "lastYear": "Vorig jaar",
+    "all": "ALLE (Laatste 30 jaar)",
+    "customRange": "Aangepast bereik",
+    "daily": "Dagelijks",
+    "hourly": "Uurlijks",
+    "weekly": "Wekelijks"
+  },
+  "gmap": {
+    "mapType": "Type Kaart(in blauw)",
+    "type": {
+      "roadmap": "Wegenkaart",
+      "satellite": "Satellietbeeld",
+      "hybrid": "Hybride",
+      "terrain": "Terrein"
+    },
+    "lon": "Lengtegraad",
+    "lat": "Breedtegraad",
+    "drag": "Versleep me!",
+    "err1": "Locatieservices zijn niet geactiveerd in uw browser. Schakel deze functie in.",
+    "err2": "Uw browser ondersteunt geen locatieservices. Geef uw locatie handmatig in.",
+    "operate": "Versleep de cursor om de meldlocatie aan te duiden!"
+  },
+  "sidemenu": {
+    "fcs": "FCS",
+    "floodCitiSense": "FloodCitiSense",
+    "editProfile": "Bewerk profiel",
+    "editProfileAbbr": "BP",
+    "resetProfile": "Reset wachtwoord",
+    "resetProfileAbbr": "RW",
+    "rainfallSensors": "Regensensoren",
+    "floodMenu1": "NEERSLAG EN",
+    "floodMenu2": "WATEROVERLAST MELDINGEN",
+    "about": "Meer info",
+    "ews": "Preventief waarschuwingssysteem",
+    "smpn": "Melding verzenden",
+    "visitors": "bezoekers",
+    "//_NewTxt_01": ""
+  },
+  "sensor": {
+    "pageTitle": "FloodCitiSense Regensensoren",
+    "filter": {
+      "title": "Type sensor",
+      "allReduce": "ALLE (- ANDEREN)",
+      "all": "ALLE",
+      "fcs": "FloodCitiSense",
+      "ea": "Environment Agency",
+      "kn": "KNMI",
+      "na": "Andere",
+      "flowbru": "Flowbru‎"
+    },
+    "table": {
+      "title": "Regensensor",
+      "column": {
+        "type": "Type",
+        "sensorID": "Sensor ID",
+        "action": "Actie",
+        "typeID": "Type ID"
+      }
+    },
+    "map": {
+      "warning": {
+        "noRainfallData": "Geen neerslaggegevens"
+      },
+      "chart": {
+        "title": "Neerslag (mm) van sensor-ID"
+      },
+      "btn": {
+        "openBigChart": "Open grote grafiek",
+        "exportData": "Exporteer gegevens"
+      }
+    }
+  },
+  "incident": {
+    "pageTitle": "FloodCitiSense Meldingsrapporten voor Regen en Wateroverlast",
+    "type": {
+      "rainfall": {
+        "noRainfall": "Geen regen",
+        "drizzle": "Motregen",
+        "mediumIntensity": "Normale regenbui",
+        "heavyRainfall": "Zware regenbui",
+        "torrential": "Hevige regenstorm"
+      },
+      "flooding": {
+        "noFlooding": "Geen overstromingen",
+        "streetFlooding": "Wateroverlast op straat",
+        "parksFlooding": "Wateroverlast in het park",
+        "houseFlooding": "Wateroverlast binnenshuis",
+        "gardenFlooding": "Wateroverlast in de tuin",
+        "riverFlooding": "Rivier stroomt over",
+        "riverLevelRising": "Rivierpeil stijgt",
+        "sewerBlocked": "Kolkoverstroming"
+      },
+      "floodExtent": {
+        "small": "Een klein deel",
+        "half": "Half overstroomd",
+        "completely": "Volledig overstroomd"
+      },
+      "floodDepth": {
+        "2": "Natte voeten (<2 cm)",
+        "10": "Enkeldiep (<10 cm)",
+        "25": "Natte schenen (<25 cm)",
+        "50": "Tot aan de knieën (<50 cm)",
+        "higher": "Hoger dan 50 cm"
+      },
+      "floodFrequency": {
+        "first": "Eerste keer wateroverlast",
+        "occasionally": "Af en toe last van wateroverlast",
+        "regularly": "Regelmatig last van wateroverlast",
+        "non": "Ik weet het niet"
+      },
+      "spaceFlooded": {
+        "private": "Privé",
+        "public": "Openbaar",
+        "both": "Beide"
+      },
+      "waterClarity": {
+        "clear": "Helder",
+        "muddy": "Modderig",
+        "sewage": "Rioolwater"
+      }
+    },
+    "table": {
+      "title": "Neerslag en Wateroverlast meldingen",
+      "column": {
+        "action": "Actie",
+        "date": "Datum",
+        "flooding": "Soort wateroverlast",
+        "id": "ID",
+        "rainfall": "Soort regenval",
+        "test": "Test"
+      },
+      "addBtnText": "Meldt een incident",
+      "addBtnToolTip": "Neerslag en Wateroverlast meldingen toevoegen",
+      "//_NewTxt_03": ""
+    },
+    "report": {
+      "by": "door",
+      "clarity": "Helderheid van het water",
+      "damage": "Tekenen van schade?",
+      "depth": "Diepte van het water",
+      "extent": "Omvang van de wateroverlast",
+      "frequency": "Herhalingstijd van wateroverlast?",
+      "impacted": "Impact voor verslaggever?",
+      "obstruction": "Tekenen van schade??",
+      "reported": "Gerapporteerd",
+      "spaceFlooded": "Type gebied dat is overstroomd",
+      "pos": "Positie"
+    },
+    "btn": {
+      "myReport": "Mijn Rapporten(in blauw)",
+      "upload": "Doorsturen",
+      "uploadPic": "Foto doorsturen",
+      "uploadedPic": "Geüploade foto",
+      "moveloc": "Verplaats naar locatie"
+    },
+    "msg": {
+      "uploadPic": "Wacht tot de foto is geüpload...",
+      "uploadRep": "Wacht tot het rapport is geüpload...",
+      "select": "Plaats selecteren ",
+      "completed": "Uploaden voltooid",
+      "failed": "Uploaden mislukt",
+      "revert": "U kunt dit niet herstellen!",
+      "delit": "Verwijderen!",
+      "delsuc": "Succesvol verwijderd!",
+      "delfail": "Fout verwijdering!",
+      "photoLimit": "Limiet voor het uploaden van foto's is 2 MB",
+      "selectPhoto": "Selecteer een afbeeldingsbestand"
+    }
+  },
+  "login": {
+    "pageTitle": "FloodCitiSense Inloggen",
+    "userNameOrEmail": "Gebruikersnaam of email",
+    "password": "Wachtwoord",
+    "or": "OF",
+    "singinGoogle": "Log in met Google+",
+    "singinFacebook": "Log in met Facebook",
+    "registerNewMember": "Maak een nieuwe account aan",
+    "forgetPassword": "Ik ben mijn wachtwoord vergeten",
+    "checkUser": "Voer gebruikersnaam of e-mailadres in",
+    "checkpwd": "Voer wachtwoord in",
+    "title": "Log in om uw sessie te starten",
+    "success": "Succesvol ingelogd",
+    "failed": "Ongeldige gebruikersnaam of wachtwoord",
+    "forgotpwd": "Wachtwoord vergeten",
+    "//_NewTxt_04": ""
+  },
+  "pwdreset": {
+    "pageTitle": "FloodCitiSense tel uw wachtwoord opnieuw in ",
+    "title": "Vul het e-mailadres van uw gebruikersaccount in en we sturen u een link voor het opnieuw instellen van uw wachtwoord.",
+    "btnSend": "E-mail voor opnieuw instellen van wachtwoord verzenden",
+    "success": "Controleer uw e-mail voor een link om uw wachtwoord opnieuw in te stellen. Als u de e-mail niet binnen een paar minuten ontvangt, controleer dan uw spam-map.",
+    "//_NewTxt_05": ""
+  },
+  "signup": {
+    "pageTitle": "FloodCitiSense Aanmelding",
+    "title": "Als u een gratis account maakt, kunt u wateroverlast meldingen toevoegen en uw eigen rapporten bekijken",
+    "userName": "Gebruikersnaam",
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "emailAddress": "E-mailadres",
+    "experienceTitle": "Hoeveel ervaring heb je met citizen science?",
+    "none": "Beginner",
+    "some": "Gemiddeld",
+    "expert": "Expert",
+    "tpTitle": "Ik stem in met de",
+    "tc": "voorwaarden",
+    "and": "en",
+    "pp": "het privacybeleid",
+    "createAccount": "Maak een account aan",
+    "alreadyMember": "Ik heb al een account",
+    "success": "U bent succesvol geregistreerd! Meld u aan om uw sessie te starten",
+    "failed": "Registratie mislukt!"
+  },
+  "profile": {
+    "pageTitle": "FloodCitiSense Profiel bewerken",
+    "title": "Update uw persoonlijk profiel",
+    "phone": "Telefoonnummer",
+    "update": "Profiel bijwerken",
+    "success": "Profiel succesvol bijgewerkt!",
+    "failed": "Profielupdate mislukt!"
+  },
+  "pwd": {
+    "pageTitle": "FloodCitiSense Wachtwoord wijzigen",
+    "title": "Wachtwoord wijzigen",
+    "currentPwd": "Huidig wachtwoord",
+    "newPwd": "Nieuw wachtwoord",
+    "repPwd": "Herhaal nieuw wachtwoord",
+    "update": "Vernieuw wachtwoord",
+    "success": "Wachtwoord succesvol gewijzigd!",
+    "failed": "Wijziging wachtwoord is mislukt!",
+    "notsame": "De twee wachtwoorden zijn niet identiek!"
+  },
+  "btn": {
+    "cancel": "Annuleren",
+    "close": "Sluiten",
+    "edit": "Bewerk",
+    "new": "Nieuw",
+    "editReport": "Wijzig rapport",
+    "delReport": "Verwijder rapport",
+    "locate": "Situeren",
+    "no": "NEE",
+    "ok": "OK",
+    "save": "Opslaan",
+    "signIn": "Registreren",
+    "viewDetail": "Bekijk details",
+    "yes": "JA",
+    "next": "Volgende",
+    "previous": "Vorige",
+    "saveAndUpload": "Opslaan en uploaden",
+    "download": "downloaden",
+    "copy": "kopiëren",
+    "//_NewTxt_06": ""
+  },
+  "about": {
+    "title": "Over FloodCitiSense",
+    "content": {
+      "one": "In Europa wonen ongeveer 500 miljoen mensen in steden, waarvan vele kwetsbaar zijn voor extreme weersomstandigheden. Dit is ook gebleken uit recente wateroverlast en overstromingen in Noord- en Midden-Europa, die zorgden voor enorme schade en verliezen ter waarde van miljarden euro's. Wateroverlast van pluviale aard treedt op wanneer zware regenval de capaciteit van het rioleringssysteem van een stad overschrijdt. Vanwege de snelle aanvang en het vaak lokale karakter van dit type wateroverlast, veroorzaken dergelijke gebeurtenissen aanzienlijke schade aan stedelijke omgevingen en zijn ze moeilijk te beheren.",
+      "two": "Het FloodCitiSense-project heeft tot doel een vroegtijdige waarschuwingsdienst voor stedelijke wateroverlast te ontwikkelen. Het bouwt voort op state-of-the-art kennis, methoden en slimme technologieën die door onderzoekseenheden en privébedrijven worden aangeboden om een innovatieve openbare dienst te creëren die de kwetsbaarheid van stedelijke gebieden en burgers voor wateroverlast vermindert.",
+      "three": "Met deze FloodCitiSense-webapp kunt u neerslaggegevens bekijken van zowel officiële sensornetwerken (EA UK, KNMI, Flowbru), alsook goedkope sensoren die door burgers worden ingezet in het kader van FloodCitiSense. U kunt ook wateroverlast- en neerslagmeldingen bekijken die werden gerapporteerd door burgers met behulp van de mobiele FloodCitiSense app."
+    },
+    "download": {
+      "title": "U kunt de mobiele app downloaden via",
+      "googlePlay": "Google PlayStore：",
+      "appleStore": "Apple AppStore：",
+      "moreinfo": "Zie voor meer informatie "
+    }
+
+  },
+  "footer": {
+    "aboutUs": "Over ons",
+    "design": "2019 Ontworpen door",
+    "designOrg": "FloodCitiSense",
+    "code": "Code door",
+    "codeOrg": "FloodCitiSense"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "google": "Google"
+  },
+  "//_NewTxt_ews": null,
+  "ews": {
+    "pageTitle": "Preventief waarschuwingssysteem",
+    "filter": {
+      "rotterdam": "Rotterdam",
+      "brussels": "Brussel",
+      "birmingham": "Birmingham"
+    },
+    "table": {
+      "title": "Lijst met functies",
+      "column": {
+        "id": "ID",
+        "name": "Naam"
+      }
+    },
+    "map": {
+      "chart": {
+        "title": "Kans op wateroverlast "
+      }
+    }
+  },
+  "smpn": {
+    "pageTitle": "Stuur een mobiel bericht",
+    "table": {
+      "title": "Geschiedenis van meldingsberichten",
+      "date": "Datum",
+      "tag": "Label"
+    },
+    "form": {
+      "title": "Titel",
+      "formTitle": "Melding van een bericht",
+      "message": "Bericht",
+      "fotmTitle2": "Selecteer land en taal",
+      "country": "Land",
+      "language": "Taal",
+      "tag": "Gepersonaliseerde melding",
+      "sent": "Melding verzenden"
+    },
+    "opt": {
+      "country": {
+        "Belgium": "België",
+        "UnitedKingdom": "Verenigd Koningkrijk",
+        "Netherlands": "Nederland",
+        "Austria": "Oostenrijk"
+      },
+      "language": {
+        "English": "Engels",
+        "French": "Frans",
+        "Spanish": "Spaans",
+        "Dutch": "Nederlands",
+        "German": "Duitse",
+        "Greek": "Grieks"
+      }
+    },
+    "msg": {
+      "empty": " is leeg",
+      "over100": " meer dan 100 karakters",
+      "over300": " meer dan 300 karakters",
+      "suucess": "Bericht succesvol verzonden!",
+      "all": "Alle",
+      "view": "Zie"
+    },
+    "//_NewTxt_07": ""
+  },
+  "table": {
+    "sProcessing": "Bezig...",
+    "sLengthMenu": "_MENU_ resultaten weergeven",
+    "sZeroRecords": "Geen resultaten gevonden",
+    "sInfo": "_START_ tot _END_ van _TOTAL_ resultaten",
+    "sInfoEmpty": "Geen resultaten om weer te geven",
+    "sInfoFiltered": " (gefilterd uit _MAX_ resultaten)",
+    "sInfoPostFix": "",
+    "sSearch": "Zoeken:",
+    "sEmptyTable": "Geen resultaten aanwezig in de tabel",
+    "sInfoThousands": ".",
+    "sLoadingRecords": "Een moment geduld aub - bezig met laden...",
+    "oAria": {
+      "sSortAscending": ": activeer om kolom oplopend te sorteren",
+      "sSortDescending": ": activeer om kolom aflopend te sorteren"
+    }
+  }
+}

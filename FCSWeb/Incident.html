@@ -1,0 +1,2348 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title data-i18n="incident.pageTitle" id="pageTitle">
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />f
+    <link href="assets/css/now-ui-dashboard.min.css?v=1.4.0" rel="stylesheet" />
+    <!--<link href="assets/css/adminlte.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="assets/js/plugins/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/js/plugins/daterangepicker.css" />
+    <link rel="stylesheet" href="assets/css/fcs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" />
+</head>
+
+<body class="sidebar-mini" style="overflow:auto;">
+    <div class="wrapper ">
+        <!--     side menu     -->
+        <div class="sidebar" data-color="blue" id="fcsSideBar">
+            <div class="logo">
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-mini"
+                   data-i18n="sidemenu.fcs">
+                </a>
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-normal"
+                   data-i18n="sidemenu.floodCitiSense">
+                </a>
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+                        <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                        <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-wrapper" id="sidebar-wrapper">
+                <div class="user d-none" id="FCSNavUser">
+                    <div class="photo">
+                        <img src="images/missingAvatar.png" />
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            <span>
+                                <span id="fcsSidebarUserName" data-i18n="nav.account"></span>
+                                <b class="caret"></b>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseExample">
+                            <ul class="nav">
+                                <li>
+                                    <a href="Profile.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.editProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.editProfile"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Pwd.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.resetProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.resetProfile"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav" id="fcsSideMenu">
+                    <!--<li>
+                        <a href="Default.html">
+                            <i class="fas fa-map-marked"></i>
+                            <p data-i18n="sidemenu.rainfallSensors"></p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="Incident.html">
+                            <i class="fas fa-cloud-rain"></i>
+                            <p data-i18n="sidemenu.floodMenu1"></p>
+                            <p style="padding-left:46px;" data-i18n="sidemenu.floodMenu2"></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="EWS.html">
+                            <i class="fas fa-water"></i>
+                            <p data-i18n="sidemenu.ews"></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="openAboutDlg();">
+                            <i class="fa fa-info-circle"></i>
+                            <p data-i18n="sidemenu.about"></p>
+                        </a>
+                    </li>-->
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="main-panel" id="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="http://floodcitisense.webflow.io/" target="_blank">FloodCitiSense</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="navbar-nav" id="fcsNav"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="now-ui-icons location_world"></i> <span id="fcsCurrentLng">English</span></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('en'); return false;"><span data-i18n="lng.english"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('fr'); return false;"><span data-i18n="lng.french"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('nl'); return false;"><span data-i18n="lng.dutch"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('el'); return false;"><span data-i18n="lng.greek"> </span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="panel-header" style="height:100px;padding-top: 10px;padding-bottom: 10px;background:#00a99d">
+            </div>
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-4" style="min-height:600px;">
+                        <div class="card">
+                            <div class="card-header" id="fcsTableHeader">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label style="font-size:16px;padding:2px;margin:0px;" data-i18n="incident.table.title"></label>
+                                    </div>
+                                    <div class="col-3 m-0 p-0">
+                                        <button class="btn btn-warning btn-icon float-right d-block m-0 p-0 font-weight-bold" style="width: 100%; height: 100%; font-size: 9px;" data-toggle="tooltip" title="" id="fcsAdd" data-i18n="incident.table.addBtnText">
+                                        </button>
+                                    </div>
+                                    <div class="col-3 m-0 p-0">
+                                        <button class="btn btn-success btn-icon float-right d-block m-0 p-0" style="width: 100%; height: 100%; font-size: 9px;" data-toggle="tooltip" title="" id="goOther">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-body" style="padding:3px; border: 1px solid #ccc;">
+                                            <div class="row">
+                                                <select id="cboIncidentTypeRainfall" class="col-6 selectpicker" data-size="7" data-style="btn btn-secondary btn-sm">
+                                                    <!--<option disabled>Single Option</option>-->
+                                                    <!--<option value="-1" selected>ALL (Type of rainfall)</option>
+                                                    <option value="No"></option>
+                                                    <option value="Drizzle"></option>
+                                                    <option value="Medium"></option>
+                                                    <option value="Heavy"></option>
+                                                    <option value="Torrential"></option>-->
+                                                </select>
+                                                <select id="cboIncidentTypeFlooding" class="col-6 selectpicker" data-size="9" data-style="btn btn-secondary btn-sm">
+                                                    <!--<option disabled> Multiple Options</option>-->
+                                                    <!--<option value="-1" selected>ALL (Type of flooding)</option>
+                                                    <option value="0"></option>
+                                                    <option value="1"></option>
+                                                    <option value="2"></option>
+                                                    <option value="3"></option>
+                                                    <option value="4"></option>
+                                                    <option value="5"></option>
+                                                    <option value="6"></option>
+                                                    <option value="7"></option>-->
+                                                </select>
+                                            </div>
+                                            <div class="row" style="padding-top:3px;">
+                                                <div class="col-6" style="padding:0px 0px 2px 15px;margin:0px;">
+                                                    <div id="reportrange" style="cursor: pointer; padding: 1px 1px; border: 0px solid #ccc;">
+                                                        <img src="images/calendar.png" />
+                                                        <span id="spantitvl"></span> <img src="images/triangle.png" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 d-none" style="padding:0px 0px 0px 3px;margin:0px;" id="icdDivFilterMyReport">
+                                                    <span style="margin-right:0px;padding-right:0px;" data-i18n="incident.btn.myReport"></span>
+                                                    <!--<input type="checkbox" name="checkbox" class="bootstrap-switch" id="icdFilterMyReport"
+                                                           data-on-label="<i class='now-ui-icons ui-1_check'></i>"
+                                                           data-off-label="<i class='now-ui-icons ui-1_simple-remove'></i>" />-->
+
+                                                    <input type="checkbox" data-style="ios" id="icdFilterMyReport2" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <table id="maintable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr style="font-size:10px;">
+                                            <th data-i18n="incident.table.column.rainfall"></th>
+                                            <th data-i18n="incident.table.column.flooding"></th>
+                                            <th data-i18n="incident.table.column.date"></th>
+                                            <th data-i18n="incident.table.column.action"></th>
+                                            <th data-i18n="incident.table.column.id"></th>
+                                            <th data-i18n="incident.report.damage"></th>
+                                            <th data-i18n="incident.report.obstruction"></th>
+                                            <th data-i18n="incident.report.impacted"></th>
+                                            <th data-i18n="incident.report.depth"></th>
+                                            <th data-i18n="incident.report.extent"></th>
+                                            <th data-i18n="incident.table.column.flooding"></th>
+                                            <th data-i18n="incident.report.frequency"></th>
+                                            <th data-i18n="incident.report.pos"></th>
+                                            <th data-i18n="incident.report.spaceFlooded"></th>
+                                            <th data-i18n="incident.report.clarity"></th>
+                                            <th data-i18n="incident.table.column.id"></th>
+                                            <!--<th data-i18n="incident.table.column.test"></th>
+                                            <th data-i18n="incident.table.column.test"></th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr style="font-size:10px;">
+                                            <th data-i18n="incident.table.column.rainfall"></th>
+                                            <th data-i18n="incident.table.column.flooding"></th>
+                                            <th data-i18n="incident.table.column.date"></th>
+                                            <th data-i18n="incident.table.column.action"></th>
+                                            <th data-i18n="incident.table.column.id"></th>
+                                            <th data-i18n="incident.report.damage"></th>
+                                            <th data-i18n="incident.report.obstruction"></th>
+                                            <th data-i18n="incident.report.impacted"></th>
+                                            <th data-i18n="incident.report.depth"></th>
+                                            <th data-i18n="incident.report.extent"></th>
+                                            <th data-i18n="incident.table.column.flooding"></th>
+                                            <th data-i18n="incident.report.frequency"></th>
+                                            <th data-i18n="incident.report.pos"></th>
+                                            <th data-i18n="incident.report.spaceFlooded"></th>
+                                            <th data-i18n="incident.report.clarity"></th>
+                                            <th data-i18n="incident.table.column.id"></th>
+                                            <!--<th data-i18n="incident.table.column.test"></th>
+                                            <th data-i18n="incident.table.column.test"></th>-->
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- end content-->
+                            <div class="overlay" style="" id="loading_table">
+                                <i class="fas fa-sync-alt fa-spin"></i>
+                            </div>
+                        </div><!--  end card  -->
+
+                    </div>
+                    <div class="col-md-8">
+                        <!--<div id="map" style="position: absolute;width: 100%;left: 0;height:1000px;"></div>-->
+                        <!--<div class="container-fluid" style="height:100%;">-->
+                        <div class="container-fluid" style="height:100%;width:100%;position:absolute;top:0;padding:0;">
+                            <div id="map" style="min-height:600px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fcsFooter" style="padding:0;margin:0;"></div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="icdViewModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:mediumspringgreen;">
+                    <h5 class="modal-title" id="icdViewTitle" data-i18n="incident.table.title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" id="icdViewPictureRow">
+                        <div id="icdViewPicture">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-12 col-form-label" id="icdViewInfo"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label align-self-center" data-i18n="incident.table.column.rainfall"></label>
+                        <div class="col-sm-8" style="float:left;" id="icdViewTypeOfRain">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label align-self-center" data-i18n="incident.table.column.flooding"></label>
+                        <div class="col-sm-8" style="float:left;" id="icdViewTypeOfFlood">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.damage"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewSignOfDamage"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.obstruction"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewSignOfObstruction"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.extent"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewFloodExtent"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.depth"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewFloodDepth"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.frequency"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewFloodFrequency"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.spaceFlooded"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewTypeOfSpaceFlooded"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.clarity"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewWaterClarity"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 col-form-label align-self-center" data-i18n="incident.report.impacted"></label>
+                        <label class="col-sm-6 col-form-label align-self-center" id="icdViewReporterImpacted"></label>
+                    </div>
+
+                    <div class="row pull-right">
+                        <button type="button" class="btn btn-secondary" onclick="$('#icdViewModal').modal('hide')" data-i18n="btn.ok"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="icdEditModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:darkkhaki;">
+                    <h5 class="modal-title"><span class="badge badge-warning" id="icdEditAct" data-i18n="btn.edit"></span><span data-i18n="incident.table.title"></span></h5>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>-->
+                </div>
+                <div class="modal-body" style="padding-top:0px;">
+                    <div class="row ">
+                        <div class="col-md-12 text-right">
+                            <label class=" col-form-label font-weight-bold float-right" id="icdEditInfo"></label>
+                        </div>
+                    </div>
+                    <div class="row border border-warning">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.table.column.rainfall"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfRain" required value="0">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/rain-none.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.rainfall.noRainfall"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfRain" required value="1">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/rain-drizzle.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.rainfall.drizzle"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfRain" required value="2">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/rain-medium.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.rainfall.mediumIntensity"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfRain" required value="3">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/rain-heavy.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.rainfall.heavyRainfall"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfRain" required value="4">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/rain-torrential.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.rainfall.torrential"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.table.column.flooding"></label>
+                        <div class="col-sm-10 checkbox-radios">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="0">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_no.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.noFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="1">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_street.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.streetFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="2">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_park.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.parksFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="3">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_house.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.houseFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="4">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_garden.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.gardenFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="5">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/river-flooding.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.riverFlooding"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="6">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/flooding_river.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.riverLevelRising"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="icdEditTypeOfFlooding" value="7">
+                                    <span class="form-check-sign"></span>
+                                    <img src="images/sewer-blocked.png" style="height:30px;" />
+                                    <span data-i18n="incident.type.flooding.sewerBlocked"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.damage"></label>
+                        <div class="col-sm-2 align-self-center" style="margin-top:10px;">
+                            <input type="checkbox" data-style="ios" id="icdEditSignOfDamage" />
+                        </div>
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.obstruction"></label>
+                        <div class="col-sm-2 align-self-center" style="margin-top:10px;">
+                            <input type="checkbox" data-style="ios" id="icdEditSignOfObstruction" />
+                        </div>
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.impacted"></label>
+                        <div class="col-sm-2 align-self-center" style="margin-top:10px;">
+                            <input type="checkbox" data-style="ios" id="icdEditReporterImpacted" />
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.extent"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodExtent" value="0">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodExtent.small"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodExtent" value="1">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodExtent.half"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodExtent" value="2">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodExtent.completely"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.depth"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodDepth" value="0">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodDepth.2"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodDepth" value="1">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodDepth.10"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodDepth" value="2">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodDepth.25"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodDepth" value="3">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodDepth.50"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodDepth" value="4">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodDepth.higher"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.frequency"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodFrequency" value="0">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodFrequency.first"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodFrequency" value="1">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodFrequency.occasionally"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodFrequency" value="2">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodFrequency.regularly"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditFloodFrequency" value="3">
+                                    <span class="form-check-sign" data-i18n="incident.type.floodFrequency.non"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.spaceFlooded"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfSpaceFlooded" value="0">
+                                    <span class="form-check-sign" data-i18n="incident.type.spaceFlooded.private"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfSpaceFlooded" value="1">
+                                    <span class="form-check-sign" data-i18n="incident.type.spaceFlooded.public"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditTypeOfSpaceFlooded" value="2">
+                                    <span class="form-check-sign" data-i18n="incident.type.spaceFlooded.both"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.clarity"></label>
+                        <div class="col-sm-10 checkbox-radios mt-1 mb-1">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditWaterClarity" value="0">
+                                    <span class="form-check-sign" data-i18n="incident.type.waterClarity.clear"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditWaterClarity" value="1">
+                                    <span class="form-check-sign" data-i18n="incident.type.waterClarity.muddy"></span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="icdEditWaterClarity" value="2">
+                                    <span class="form-check-sign" data-i18n="incident.type.waterClarity.sewage"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.report.pos"></label>
+                        <div class="col-sm-10 mt-1 mb-1">
+
+                            <label data-i18n="gmap.lon"></label>
+                            <input type="number" id="icdEditPosLon" style="width:150px;" max="180" min="-180" />
+                            &nbsp;
+                            <label data-i18n="gmap.lat"></label>
+                            <input type="number" id="icdEditPosLat" style="width:150px;" max="180" min="-180" />
+                            <button type="button" class="btn btn-primary d-none" style="width:200px;" id="icdEditLocMove" data-i18n="incident.btn.moveloc"></button>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1">
+                        <div class="container-fluid" style="height:100%;width:100%;top:0;padding:0;">
+                            <div id="map2" style="min-height:300px;"></div>
+                        </div>
+                    </div>
+                    <div class="row  border border-warning mt-1 mb-1" id="icdEditPictureRow">
+                        <label class="col-2 col-form-label align-self-center" data-i18n="incident.btn.uploadedPic"></label>
+                        <div class="row col-10">
+                            <div id="icdEditPicture" class="row col-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border border-warning mt-1 mb-1" id="icdEditPictureRowUpload">
+                        <label class="col-sm-2 col-form-label align-self-center" data-i18n="incident.btn.uploadPic"></label>
+                        <div id="icdEditPictureNew" class="row col-sm-10">
+                            <!--<i class="fa fa-plus imgAdd"></i>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" style="width:200px;" id="icdEditClose" data-i18n="btn.close"></button>
+                    <button type="button" class="btn btn-success" style="width:200px;" id="icdEditSave" data-i18n="btn.saveAndUpload"></button>
+                </div>
+            </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="fas fa-layer-group fa-2x" style="color:white;padding-top:10px;padding-bottom:10px;"></i>
+                <!--<i class="fa fa-cog fa-2x"> </i>-->
+            </a>
+            <ul class="dropdown-menu" style="width:180px;">
+                <li class="adjustments-line" style="height:170px">
+                    <a href="javascript:void(0)" class="switch-trigger">
+                        <div class="card" style="margin:0px;padding:0px;">
+                            <div class="card-header " style="margin:0px;padding:0px;">
+                                <h5 class="card-title" style="color:black;" data-i18n="gmap.mapType"></h5>
+                            </div>
+                            <div class="card-body" style="margin:0px;padding:0px;">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype1" value="roadmap" checked>
+                                        <span class="form-check-sign" data-i18n="gmap.type.roadmap"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype2" value="satellite">
+                                        <span class="form-check-sign" data-i18n="gmap.type.satellite"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype3" value="hybrid">
+                                        <span class="form-check-sign" data-i18n="gmap.type.hybrid"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype4" value="terrain">
+                                        <span class="form-check-sign" data-i18n="gmap.type.terrain"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                &nbsp;
+            </ul>
+        </div>
+    </div>
+    <div id="fcsAbout" style="padding:0;margin:0;">
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/plugins/bootstrap-notify.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/now-ui-dashboard.js?v=1.4.0" type="text/javascript"></script>
+    <script src="assets/js/plugins/sweetalert2.min.js"></script>
+
+    <!-- FCS General purpose JS -->
+    <script src="assets/js/plugins/moment.js"></script>
+    <script src="assets/js/plugins/moment-with-locales.js"></script>
+    <script src="assets/js/plugins/moment-timezone.js"></script>
+    <script src="assets/js/plugins/moment-timezone-with-data-2012-2022.js"></script>
+    <script src="assets/js/plugins/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/17.0.6/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.0.0/i18nextXHRBackend.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/3.0.1/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+    <!--<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
+    <script src="assets/js/plugins/bootbox.min.js"></script>
+    <script src="assets/js/fcsjs.js?v=245"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAPzUobkAIPQhZCzwkEw70Qc_bFA7BBIYo",
+            authDomain: "floodcitisense.firebaseapp.com",
+            databaseURL: "https://floodcitisense.firebaseio.com",
+            projectId: "floodcitisense",
+            storageBucket: "floodcitisense.appspot.com",
+            messagingSenderId: "526829940303",
+            appId: "1:526829940303:web:a654a9f2013ad4df"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <script src="http://api.ipify.org/?format=jsonp&callback=get_viewers_ip">
+    </script>
+    <script>
+        //page init
+        {
+            var infoWindow, selRow, selectTr;
+            var uploadpicResponseArr = new Array();
+            var uploadpicArr = new Array();
+            var uploadPicCounter = 0;
+            var reWaitInterval;
+            var markers = [];
+            var zoomLevel = 2;
+            var lastFilterLength = -1;
+            var url = 'https://api.floodcitisense.eu/';
+            var lastMapHeight = 0;
+            var mapHeightPadding = 120;
+            var start = moment().subtract(365 * 50, 'days');
+            var end = moment().subtract(0, 'days');
+            //$.fn.bootstrapSwitch.defaults.size = 'large';
+            $.fn.bootstrapSwitch.defaults.onColor = 'danger';
+            var table;
+
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 100;
+            h = 300;
+            //fcsAlert("upload", "test", 'info');
+            var uploadPicProcress, uploadReportProcress;
+        }
+
+        function langChangeAnchor(lng) {
+            $('body').localize();
+            $('#pageTitle').localize();
+            $('#modalAbout').localize();
+            $('#divFooter').localize();
+            try { $('#divFooter').localize(); $('#modalAbout').localize(); } catch (ex) { };
+            initNav();
+            if (sessionStorage.getItem('fcs_page_views_count') != null) {
+                $('#fcsCounter').html('&nbsp;' + i18next.t('sidemenu.visitors') + "：" + sessionStorage.getItem('fcs_page_views_count'));
+            }
+            if (table)
+                table.destroy();
+            try {
+                table = $('#maintable').DataTable({
+                    'pagingType': "full_numbers",
+                    'lengthMenu': [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]],
+                    displayLength: 10,
+                    responsive: true,
+                    scrollY: '70vh',
+                    scrollCollapse: true,
+                    paging: true,
+                    "order": [[2, 'desc']],
+                    dom: 'Bfrtip',
+                    buttons: [
+                        //'copy', 'excel'
+                        {
+                            extend: 'copyHtml5',
+                            text: i18next.t('btn.copy'),
+                            exportOptions: {
+                                columns: [0, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                            }
+                        },
+                        {
+                            extend: 'excelHtml5',
+                            text: i18next.t('btn.download'),
+                            exportOptions: {
+                                columns: [0, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                            }
+                        }
+                    ],
+                    language: {
+                        "sEmptyTable": i18next.t('table.sInfoEmpty'),
+                        "sInfo": i18next.t('table.sInfo'),
+                        "sInfoEmpty": i18next.t('table.sInfoEmpty'),
+                        "sInfoFiltered": i18next.t('table.sInfoFiltered'),
+                        "sInfoPostFix": i18next.t('table.sInfoPostFix'),
+                        "sInfoThousands": i18next.t('table.sInfoThousands'),
+                        "sLengthMenu": i18next.t('table.sLengthMenu'),
+                        "sLoadingRecords": i18next.t('table.sLoadingRecords'),
+                        "sProcessing": i18next.t('table.sProcessing'),
+                        "sSearch": i18next.t('table.sSearch'),
+                        "sZeroRecords": i18next.t('table.sZeroRecords'),
+                        "oAria": {
+                            "sSortAscending": i18next.t('table.oAria.sSortAscending'),
+                            "sSortDescending": i18next.t('table.oAria.sSortDescending')
+                        },
+                        search: '_INPUT_',
+                        paginate: {
+                            "first": '<i class="fa fa-backward"></i>',
+                            "last": '<i class="fa fa-forward"></i>',
+                            "next": '<i class="fa fa-step-forward"></i>',
+                            "previous": '<i class="fa fa-step-backward"></i>'
+                        }
+                    },
+                    'columns': [
+                        { data: 'typeOfRainName' },//0
+                        { data: null },//1
+                        { data: 'date' },//2
+                        { data: null },//3
+                        { data: 'creatorUserId' },
+                        { data: 'anySignOfDamage' },//5
+                        { data: 'anySignOfObstruction' },//6
+                        { data: 'areYouImpacted' },//7
+                        { data: 'floodDepth2' },//8
+                        { data: 'floodExtent2' },//9
+                        { data: 'floodTypes2' },//10
+                        { data: 'frequencyOfFlood2' },//11
+                        { data: 'locationDtos2' },//12
+                        //{ data: 'typeOfFloodings2' },//13
+                        { data: 'typesOfSpaceFlooded2' },//13
+                        { data: 'waterClarity2' },//14
+                        { data: 'id' }//15
+
+                        //{ data: 'typeOfFloodings' },
+                        //{ data: 'typeOfFloodings2' }
+                    ]
+                    ,
+                    'rowCallback': function (row, data, index) {
+                        var btnHtml = '<button class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-map-marked-alt" data-toggle="tooltip" title="' + i18next.t('btn.locate') + '" ></i></button>'
+                            + '<a href="#" class="btn btn-round btn-success btn-icon btn-sm edit"><i class="far fa-file-alt" title="' + i18next.t('btn.viewDetail') + '" ></i></a>';
+
+                        var isMyData = false;
+                        if (sessionStorage.getItem('fcs_id') != null) {
+                            if (data.creatorUserId == sessionStorage.getItem('fcs_id')) {
+                                btnHtml += '<a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="far fa-edit" title="' + i18next.t('btn.editReport') + '" ></i></a>';
+                                btnHtml += '<a href="#" class="btn btn-round btn-danger btn-icon btn-sm edit"><i class="far fa-trash-alt" title="' + i18next.t('btn.delReport') + '" ></i></a>';
+                                isMyData = true;
+                            }
+                        }
+                        var selfCss = 'color:blue;font-weight: bold;';
+                        $('td:eq(3)', row).html(btnHtml);
+                        if (isMyData) {
+                            $('td:eq(2)', row).html(moment(data.date).tz('Europe/London').format("YYYY/MM/DD-HH:mm")).attr('style', selfCss);
+                            $('td:eq(0)', row).attr('style', selfCss);
+                        }
+                        else {
+                            $('td:eq(2)', row).html(moment(data.date).tz('Europe/London').format("YYYY/MM/DD-HH:mm")).attr('style', '');
+                            $('td:eq(0)', row).attr('style', '');
+                        }
+                        var floodHtml = '';
+
+                        for (var i in data.floodTypes) {
+                            var floodType = getFloodTypeImg(data.floodTypes[i].typeOfFlood);
+                            floodHtml += '<img class="img-fluid img-thumbnail" style="height:30px;" src="' + floodType.s + '" title ="' + floodType.t + '">';
+                        }
+
+                        $('td:eq(1)', row).html(floodHtml);
+                        $('td:eq(0)', row).html(getRainfallTypeImg(data.typeOfRain).t);
+                    }, 'columnDefs': [{
+                        'targets': [1, 3],
+                        'data': null,
+                        'orderable': false
+                    },
+                    {
+                        'targets': [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                        'visible': false
+                    }
+                    ]
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+
+            $('#fcsIncident').addClass('active');
+            $('#goOther').html(i18next.t('smpn.msg.view') + ' ' + i18next.t('sidemenu.rainfallSensors'));
+
+            $('#cboIncidentTypeRainfall').empty().append(
+                $('<option>').attr('value', '-1').html(i18next.t('smpn.msg.all') + ' (' + i18next.t('incident.table.column.rainfall') + ')').attr('selected', 'selected')
+            ).append(
+                $('<option>').attr('value', 'No').html(i18next.t('incident.type.rainfall.noRainfall'))
+            ).append(
+                $('<option>').attr('value', 'Drizzle').html(i18next.t('incident.type.rainfall.drizzle'))
+            ).append(
+                $('<option>').attr('value', 'Medium').html(i18next.t('incident.type.rainfall.mediumIntensity'))
+            ).append(
+                $('<option>').attr('value', 'Heavy').html(i18next.t('incident.type.rainfall.heavyRainfall'))
+            ).append(
+                $('<option>').attr('value', 'Torrential').html(i18next.t('incident.type.rainfall.torrential'))
+            );
+            var arrRainfall = ['No', 'Drizzle', 'Medium', 'Heavy', 'Torrential'];
+            for (i = 0; i < arrRainfall.length; i++) {
+                $('#cboIncidentTypeRainfall option[value="' + arrRainfall[i] + '"]').attr("data-content",
+                    "<img class='img-fluid img-thumbnail' src='" + getRainfallTypeImg(i).s + "' style='height:22px;'> " + getRainfallTypeImg(i).t + "</img>");
+            }
+            $('#cboIncidentTypeFlooding').empty().append(
+                $('<option>').attr('value', '-1').html(i18next.t('smpn.msg.all') + ' (' + i18next.t('incident.table.column.flooding') + ')').attr('selected', 'selected')
+            ).append(
+                $('<option>').attr('value', '0').html(i18next.t('incident.type.rainfall.noFlooding'))
+            ).append(
+                $('<option>').attr('value', '1').html(i18next.t('incident.type.rainfall.streetFlooding'))
+            ).append(
+                $('<option>').attr('value', '2').html(i18next.t('incident.type.rainfall.parksFlooding'))
+            ).append(
+                $('<option>').attr('value', '3').html(i18next.t('incident.type.rainfall.houseFlooding'))
+            ).append(
+                $('<option>').attr('value', '4').html(i18next.t('incident.type.rainfall.gardenFlooding'))
+            ).append(
+                $('<option>').attr('value', '5').html(i18next.t('incident.type.rainfall.riverFlooding'))
+            ).append(
+                $('<option>').attr('value', '6').html(i18next.t('incident.type.rainfall.riverLevelRising'))
+            ).append(
+                $('<option>').attr('value', '7').html(i18next.t('incident.type.rainfall.sewerBlocked'))
+            );
+            for (i = 0; i < 8; i++) {
+                $('#cboIncidentTypeFlooding option[value="' + i + '"]').attr("data-content",
+                    "<img class='img-fluid img-thumbnail' src='" + getFloodTypeImg(i).s + "' style='height:22px;'> " + getFloodTypeImg(i).t + "</img>");
+            }
+
+            $("#icdEditSignOfDamage,#icdFilterMyReport2,#icdEditSignOfObstruction,#icdEditReporterImpacted").bootstrapToggle('destroy')
+            $("#icdEditSignOfDamage,#icdFilterMyReport2,#icdEditSignOfObstruction,#icdEditReporterImpacted").bootstrapToggle({
+                on: i18next.t("btn.yes"), off: i18next.t("btn.no"), onstyle: "success",
+                offstyle: "danger", style: 'ios', width: 90, height: 15
+            });
+            var dateRanges = new Array();
+            dateRanges[i18next.t('range.lastDay')] = [moment().subtract(1, 'days'), moment().subtract(0, 'days')];
+            dateRanges[i18next.t('range.lastWeek')] = [moment().subtract(7, 'days'), moment().subtract(0, 'days')]
+            dateRanges[i18next.t('range.lastMonth')] = [moment().subtract(30, 'days'), moment().subtract(0, 'days')];
+            dateRanges[i18next.t('range.last3Months')] = [moment().subtract(3, 'month').startOf('month'), moment().subtract(0, 'days')];
+            dateRanges[i18next.t('range.last6Months')] = [moment().subtract(6, 'month').startOf('month'), moment().subtract(0, 'days')];
+            dateRanges[i18next.t('range.lastYear')] = [moment().subtract(12, 'month').startOf('month'), moment().subtract(0, 'days')]
+            dateRanges[i18next.t('range.all')] = [moment().subtract(365 * 50, 'days').startOf('days'), moment().subtract(0, 'days')];
+
+            if (marker2 != null)
+                marker2.title = i18next.t('gmap.drag');
+            table.on('search.dt', function () {
+                if (lastFilterLength != table.rows({ filter: 'applied' }).nodes().length) {
+                    lastFilterLength = table.rows({ filter: 'applied' }).nodes().length;
+                    deleteMarkers();
+                    drawIncidentMap(table.rows({ filter: 'applied' }).data());
+                    if (selectTr != null) {
+                        selectTr.removeClass('selected');
+                        selectTr = null;
+                    }
+                    selRow = null;
+                }
+            });
+            table.on('click', '.btn-info', function (e) {
+                e.preventDefault();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                selectTr = $(this).parents('tr');
+                selectTr.addClass('selected');
+                selRow = table.row($(this).parents('tr')).data();
+                var padding = selRow.pictureDtos.length > 0 ? 1.2 : 0;
+                map.setCenter({ lat: (parseFloat(selRow.locationDtos[0].latitude) + padding), lng: selRow.locationDtos[0].longitude });
+                map.setZoom(18);
+                for (var i in markers) {
+                    if (markers[i].cusX == selRow.locationDtos[0].longitude &&
+                        markers[i].cusY == selRow.locationDtos[0].latitude &&
+                        markers[i].iid == selRow.id) {
+                        new google.maps.event.trigger(markers[i], 'click');
+                        break;
+                    }
+                }
+                return false;
+            });
+            table.on('click', '.btn-success', function (e) {
+                e.preventDefault();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                selectTr = $(this).parents('tr');
+                selectTr.addClass('selected');
+                selRow = table.row($(this).parents('tr')).data();
+                openIcdView();
+                if (infoWindow != null) {
+                    infoWindow.close();
+                }
+                return false;
+            });
+            table.on('click', '.btn-warning', function (e) {
+                e.preventDefault();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                selectTr = $(this).parents('tr');
+                selectTr.addClass('selected');
+                selRow = table.row($(this).parents('tr')).data();
+                //fcsAlert('Incident', 'This feature is not yet implemented', 'warning');
+                if (infoWindow != null) {
+                    infoWindow.close();
+                }
+                openIcdEdit(false);
+
+                return false;
+            });
+            table.on('click', '.btn-danger', function (e) {
+                e.preventDefault();
+                checkLoginToken();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                selectTr = $(this).parents('tr');
+                selectTr.addClass('selected');
+                selRow = table.row($(this).parents('tr')).data();
+
+                if (infoWindow != null) {
+                    infoWindow.close();
+                }
+                Swal.fire({
+                    title: i18next.t('nav.areYouSure') + "?",
+                    text: i18next.t('incident.msg.revert'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: i18next.t('btn.yes') + ', ' + i18next.t('incident.msg.delit')
+                }).then((result) => {
+                    if (result.value) {
+                        delReport(selRow);
+                    }
+                })
+                return false;
+            });
+            $('#cboIncidentTypeRainfall').on('change', function (e) {
+                e.preventDefault();
+                filterData();
+                return false;
+            });
+            $('#cboIncidentTypeFlooding').on('change', function (e) {
+                e.preventDefault();
+                filterData();
+                return false;
+            });
+            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+
+            //$('#icdFilterMyReport').on('switchChange.bootstrapSwitch', function (event, state) {
+            //    sessionStorage.setItem('fcs_myreport', $('#icdFilterMyReport').bootstrapSwitch('state'));
+            //    filterData();
+            //    return false;
+            //});
+            $('#icdFilterMyReport2').on('change', function (e) {
+                sessionStorage.setItem('fcs_myreport', $("#icdFilterMyReport2").prop('checked'));
+                //sessionStorage.setItem('fcs_myreport', $('#icdFilterMyReport').bootstrapSwitch('state'));
+                filterData();
+                return false;
+            });
+            adjustMapTableHeight();
+            if (!loadSessionIncidentData()) {
+                loadIncidents(false);
+                timeItvlSel(start, end);
+            }
+            $("#cboIncidentTypeRainfall").selectpicker('refresh');
+            $("#cboIncidentTypeFlooding").selectpicker('refresh');
+            $("#cboIncidentTypeRainfall").trigger("change");
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: dateRanges,
+                locale: {
+                    "customRangeLabel": i18next.t('range.customRange')
+                }
+            }, timeItvlSel);
+        }
+        var map2, infoWindow2, marker2, mpos2;
+        mpos2 = { lat: 52.4419775, lng: -1.9326545 };
+        /**
+        * Init Google Map and adjust Map&Table height;
+        */
+        function initMap() {
+            $('#loading_table').show();
+            mpos = { lat: 52.4419775, lng: -1.9326545 };
+            map = new google.maps.Map(document.getElementById('map'), {
+                mapTypeControl: false,
+                center: mpos,
+                zoom: 7
+            });
+            var contentString =
+                '<div class="card" style="padding:15px;min-width:300px;">' +
+                '        <div class="card-header" style="padding:0px;">' +
+                '            <h5 class="card-title" style="color:black;" id="icdVTitle">' + '' + '</h5> ' +
+                '        </div>' +
+                '        <div class="card-body form-horizontal" style="padding:0px;">' +
+                '            <div class="row">' +
+                '                <span id="icdInfo" style="padding-left:20px;"></span> ' +
+                '            </div>' +
+                '            <div class="row">' +
+                '                <label class="col-sm-4 col-form-label align-self-center" style="padding:0px;margin:0px;" id="icdVTRain">' + '' + '</label>' +
+                '                <div class="col-sm-8" id="icdTypeOfRain">' +
+                '                </div>' +
+                '            </div>' +
+                '            <div class="row">' +
+                '                <label class="col-sm-4 col-form-label align-self-center" style="padding:0px;margin:0px;" id="icdVTFlood">' + '' + '</label>' +
+                '                <div class="col-sm-8" id="icdTypeOfFlood">' +
+                '                </div>' +
+                '            </div>' +
+                '            <div class="row" id="icdPicture" style="height:100px;">' +
+                '            </div>' +
+                '            <div class="row justify-content-md-center">' +
+                '                <button class="btn btn-success" onclick="openIcdView()">' +
+                '                    <span class="btn-label">' +
+                '                        <i class="now-ui-icons travel_info"></i>' +
+                '                    </span>' +
+                '                    <span id="icdVTAct"></span>' +
+                '                </button>' +
+                '            </div>' +
+                '        </div>' +
+                '    </div> '
+                ;
+
+            infoWindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            google.maps.event.addListener(infoWindow, 'domready', function () {
+                fillInfoWindowData();
+            });
+            map.setCenter(mpos);
+            map.addListener('zoom_changed', function () {
+                var i, prevZoomLevel;
+                prevZoomLevel = zoomLevel;
+                if (map.getZoom() <= 5) {
+                    zoomLevel = 1;
+                }
+                else if (map.getZoom() > 5 && map.getZoom() <= 7) {
+                    zoomLevel = 2;
+                }
+                else if (map.getZoom() > 7 && map.getZoom() <= 9) {
+                    zoomLevel = 3;
+                }
+                else {
+                    zoomLevel = 4;
+                }
+
+                if (prevZoomLevel !== zoomLevel) {
+                    for (i = 0; i < markers.length; i++) {
+                        if (map.getZoom() <= 5) {
+                            markers[i].setIcon(markers[i].iconLevel1);
+                        }
+                        else if (map.getZoom() > 5 && map.getZoom() <= 7) {
+                            markers[i].setIcon(markers[i].iconLevel2);
+                        }
+                        else if (map.getZoom() > 7 && map.getZoom() <= 9) {
+                            markers[i].setIcon(markers[i].iconLevel3);
+                        }
+                        else {
+                            markers[i].setIcon(markers[i].iconLevel4);
+                        }
+                    }
+                }
+            });
+
+
+            map2 = new google.maps.Map(document.getElementById('map2'), {
+                center: mpos2,
+                zoom: 13
+            });
+            infoWindow2 = new google.maps.InfoWindow;
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    mpos2 = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map2.setCenter(mpos2);
+                    marker2 = new google.maps.Marker(
+                        {
+                            position: mpos2,
+                            map: map2,
+                            draggable: true,
+                            animation: google.maps.Animation.DROP,
+                            title: ''
+                        }
+                    );
+                    markerCoords(marker2);
+
+                }, function () {
+                    marker2 = new google.maps.Marker(
+                        {
+                            position: mpos2,
+                            map: map2,
+                            draggable: true,
+                            animation: google.maps.Animation.DROP,
+                            title: ''
+                        }
+                    );
+                    markerCoords(marker2);
+                    //handleLocationError(true, infoWindow2, map2.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                marker2 = new google.maps.Marker(
+                    {
+                        position: mpos2,
+                        map: map2,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        title: ''
+                    }
+                );
+                markerCoords(marker2);
+            }
+
+        }
+
+        function showLocationOperatorText(markerobject) {
+            setTimeout(function () {
+                infoWindow2.setOptions({
+                    content: '<p>' + i18next.t('gmap.operate') + '</p>'
+                });
+                infoWindow2.open(map2, markerobject);
+            }, 1000);
+        }
+
+        function handleLocationError(browserHasGeolocation, info, pos) {
+            info.setPosition(pos);
+            info.setContent(browserHasGeolocation ?
+                i18next.t('gmap.err1') :
+                i18next.t('gmap.err2'));
+            info.open(map2);
+        }
+        function markerCoords(markerobject) {
+            google.maps.event.addListener(markerobject, 'dragend', function (evt) {
+                infoWindow2.setOptions({
+                    content: '<p>' + i18next.t('gmap.lat') + ': ' + evt.latLng.lat().toFixed(7) + ', ' + i18next.t('gmap.lon') + ': ' + evt.latLng.lng().toFixed(7) + '</p>'
+                });
+                infoWindow2.open(map2, markerobject);
+                $('#icdEditPosLon').val(evt.latLng.lng().toFixed(7));
+                $('#icdEditPosLat').val(evt.latLng.lat().toFixed(7));
+            });
+
+            google.maps.event.addListener(markerobject, 'drag', function (evt) {
+                //console.log("marker is being dragged");
+            });
+        }
+
+        /**
+        * Adjust Map&Table Height when windows resize
+        */
+        function adjustMapTableHeight() {
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - mapHeightPadding;
+            if (lastMapHeight != h) {
+                h = h < 600 ? 600 : h;
+                lastMapHeight = h;
+
+                $('#map').css("height", lastMapHeight + "px");
+                $('.dataTables_scrollBody').css('height', (lastMapHeight - $('#fcsTableHeader').height - $('#fcsTableToolbar').height) + "px");
+                table.draw();
+            }
+        }
+        function uuidv4() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            )
+        }
+        function uploadReport() {
+            var d;
+            if (selRow != null) {
+                d = selRow;
+            }
+            else {
+                d = new Object();
+                d.tenantId = 1;
+                d.mobileDataId = uuidv4();
+                d.date = moment().tz('Europe/London').format();
+                d.floodTypes = [];
+                d.typeOfRain = 0;
+                d.anySignOfDamage = true;
+                d.anySignOfObstruction = true;
+                d.typesOfSpaceFlooded = 0;
+                d.floodExtent = 0;
+                d.floodDepth = 0;
+                d.frequencyOfFlood = 0;
+                d.waterClarity = 0;
+                d.areYouImpacted = true;
+                d.images = [];
+                d.pictureDtos = [];
+                d.locationDtos = [];
+                d.extensionData = '';
+                d.isDeleted = false;
+                d.deleterUserId = 0;
+                d.deletionTime = moment().tz('Europe/London').format();
+                d.lastModificationTime = moment().tz('Europe/London').format();
+                d.lastModifierUserId = sessionStorage.getItem('fcs_id');
+                d.creationTime = moment().tz('Europe/London').format();
+                d.creatorUserId = sessionStorage.getItem('fcs_id');
+                d.id = 0;
+            }
+            d.typeOfRain = $("input[type=radio][name=icdEditTypeOfRain]:checked").val();
+            var typeOfFlooding = $("input[type=checkbox][name=icdEditTypeOfFlooding]:checked");
+            d.floodTypes = [];
+            typeOfFlooding.each(function () {
+                d.floodTypes.push(createFlootType($(this).val()));
+            });
+            d.anySignOfDamage = $("#icdEditSignOfDamage").prop('checked');
+            d.anySignOfObstruction = $("#icdEditSignOfObstruction").prop('checked');
+            d.typesOfSpaceFlooded = $("input[type=radio][name=icdEditTypeOfSpaceFlooded]:checked").length > 0 ? $("input[type=radio][name=icdEditTypeOfSpaceFlooded]:checked").val() : -1;
+            d.floodExtent = $("input[type=radio][name=icdEditFloodExtent]:checked").length > 0 ? $("input[type=radio][name=icdEditFloodExtent]:checked").val() : -1;
+            d.floodDepth = $("input[type=radio][name=icdEditFloodDepth]:checked").length > 0 ? $("input[type=radio][name=icdEditFloodDepth]:checked").val() : -1;
+            d.frequencyOfFlood = $("input[type=radio][name=icdEditFloodFrequency]:checked").length > 0 ? $("input[type=radio][name=icdEditFloodFrequency]:checked").val() : -1;
+            d.waterClarity = $("input[type=radio][name=icdEditWaterClarity]:checked").length > 0 ? $("input[type=radio][name=icdEditWaterClarity]:checked").val() : -1;
+            d.areYouImpacted = $("#icdEditReporterImpacted").prop('checked');
+            d.locationDtos = [];
+            d.locationDtos.push(createLocationDtos($('#icdEditPosLon').val(), $('#icdEditPosLat').val(), d.typeOfRain, 1));
+            d.locationDtos.push(createLocationDtos($('#icdEditPosLon').val(), $('#icdEditPosLat').val(), d.typeOfRain, 0));
+            d.images = [];
+            if ($('#icdEditPicture').find('.img-thumbnail').length > 0) {
+                $('#icdEditPicture').find('.img-thumbnail').each(function () {
+                    d.images.push($(this).attr('src'));
+                });
+            }
+            if (uploadpicResponseArr.length > 0) {
+                for (i = 0; i < uploadpicResponseArr.length; i++) {
+                    if (!isEmpty(uploadpicResponseArr[i])) {
+                        d.images.push(uploadpicResponseArr[i]);
+                    }
+                }
+            }
+            var urlstr = url + 'api/services/app/Incidents/Create';
+            var act = 'post';
+            if (selRow != null) {
+                urlstr = url + 'api/services/app/Incidents/Update';
+                act = 'put';
+            }
+
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                method: act,
+                data: JSON.stringify(d),
+                beforeSend: function (request) {
+                    request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json')
+                        .setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('accessToken'));
+                    uploadReportProcress = bootbox.dialog({
+                        message: '<div class="container" style="height: ' + h + 'px;padding:0px;margin:0px; background-color: rgba(0,0,0,0.1);">' +
+                            '<div class="row justify-content-center">' +
+                            '    <div class="col-8 text-center">' +
+                            '        <h3 class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> ' + i18next.t('incident.msg.uploadRep') + '</h3>' +
+                            '    </div>' +
+                            '</div>' +
+                            '</div>',
+                        closeButton: false,
+                        size: "xl",
+                        centerVertical: true
+                    });
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        //console.log(r);
+                        if (r.success) {
+                            if (r.result.success) {
+                                uploadReportProcress.modal('hide');
+                                setTimeout(function () {
+                                    uploadReportProcress.modal('hide');
+                                    fcsAlertOnAfterClose('', i18next.t('incident.msg.completed'), 'success', function (e) {
+                                        $('#icdEditModal').modal('hide');
+                                        sessionStorage.removeItem('fcs_incidentdata');
+                                        loadIncidents(true);
+                                    });
+                                }, 500);
+                            }
+                            else {
+                                uploadReportProcress.modal('hide');
+                                reportUploadFail('');
+                            }
+                        }
+                        else {
+                            uploadReportProcress.modal('hide');
+                            reportUploadFail('');
+                        }
+                    }
+                    catch (ex) {
+                        console.log(ex);
+                        uploadReportProcress.modal('hide');
+                        reportUploadFail('');
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                    uploadReportProcress.modal('hide');
+                    reportUploadFail('');
+                }
+            });
+        }
+        function reportUploadFail(m) {
+            fcsAlertOnAfterClose('', i18next.t('incident.msg.failed') + m, 'error');
+            $('#icdEditSave').removeAttr('disabled');
+        }
+
+        function createLocationDtos(x, y, train, locationType) {
+            var obj = new Object();
+            obj.latitude = parseFloat(y);
+            obj.longitude = parseFloat(x);
+            obj.tenantID = 1;
+            //obj.altitude = 0;
+            //obj.altitudeAccuracy = 0;
+            //obj.accuracy = 0;
+            //obj.speed = 0;
+            //obj.timestamp = moment().tz('Europe/London').format();
+            obj.typeOfRain = train;
+            //obj.timeCreated = moment().tz('Europe/London').format();
+            //obj.locationType = locationType;
+            //obj.extensionData = '';
+            //obj.isDeleted = false;
+            //obj.deleterUserId = null;
+            //obj.deletionTime = null;
+            //obj.lastModificationTime = null;
+            //obj.lastModifierUserId = 0;
+            //obj.creationTime = moment().tz('Europe/London').format();
+            //obj.creatorUserId = sessionStorage.getItem('fcs_id');
+            //obj.id = 0;
+            return obj;
+        }
+
+        function createFlootType(t) {
+            var obj = new Object();
+            obj.tenantId = 1;
+            obj.typeOfFlood = parseInt(t, 10);
+            //obj.extensionData = null;
+            //obj.id = 0;
+            return obj;
+        }
+
+        function uploadPic() {
+            uploadpicResponseArr = new Array();
+            uploadPicCounter = 0;
+            for (i = 0; i < uploadpicArr.length; i++) {
+                var fd = new FormData();
+                var file = uploadpicArr[i];
+                fd.append('image', file);
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === 4) {
+                        uploadpicResponseArr.push(this.responseURL);
+                        //console.log(uploadpicResponseArr.length + ' ' + this.responseURL);
+                    }
+                });
+                xhr.addEventListener("loadend", function () {
+                    uploadPicCounter++;
+                });
+                xhr.open("POST", "https://geo-wiki.org/Application/code/uploadFloodCitiSensePhoto.php");
+                xhr.setRequestHeader("Authorization", "Bearer MYUGZe-lS9QUy6gfk-Ix4orq");
+                xhr.send(fd);
+            }
+            uploadPicProcress = bootbox.dialog({
+                message: '<div class="container" style="height: ' + h + 'px;padding:0px;margin:0px; background-color: rgba(0,0,0,0.1);">' +
+                    '<div class="row justify-content-center">' +
+                    '    <div class="col-8 text-center">' +
+                    '        <h3 class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> ' + i18next.t('incident.msg.uploadPic') + '</h3>' +
+                    '    </div>' +
+                    '</div>' +
+                    '</div>',
+                closeButton: false,
+                size: "xl",
+                centerVertical: true
+            });
+            uploadPicProcress.init(function () {
+                reWaitInterval = setInterval(function () {
+                    //console.log('uploadpicResponseArr.length=' + uploadpicResponseArr.length + ",uploadPicCounter=" + uploadPicCounter);
+                    if (uploadpicResponseArr.length == uploadpicArr.length
+                        || uploadPicCounter == uploadpicArr.length) {
+                        clearInterval(reWaitInterval);
+                        reWaitInterval = null;
+                        uploadPicProcress.modal('hide');
+                        uploadReport();
+                    }
+                }, 1000);
+            });
+        }
+
+        /**
+        * Page Ready
+        */
+        $(document).ready(function () {
+            $('#fcsFooter').load("FCSFooter.html", function () {
+                try { $('#divFooter').localize(); } catch (ex) { };
+            });
+            $('#fcsAbout').load("FCSAbout.html", function () {
+                try { $('#modalAbout').localize(); } catch (ex) { };
+            });
+            var myReport = false;
+            if (sessionStorage.getItem('fcs_myreport') != null && sessionStorage.getItem('fcs_id') != null) {
+                myReport = sessionStorage.getItem('fcs_myreport');
+            }
+
+            $("#icdFilterMyReport2").prop('checked', myReport).change();
+            //$('#icdFilterMyReport').bootstrapSwitch('state', myReport);
+            //$('#icdFilterMyReport').bootstrapSwitch('onColor', 'success');
+            //$('#icdFilterMyReport').bootstrapSwitch('offColor', 'danger');
+
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.selectpicker').selectpicker();
+            $(".dataTables_filter").hide();
+            $(window).resize(function () {
+                if (this.resizeTO) clearTimeout(this.resizeTO);
+                this.resizeTO = setTimeout(function () {
+                    adjustMapTableHeight();
+                }, 200);
+            });
+            initI18next();
+            $('.fixed-plugin a').click(function (event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+                    else if (window.event) {
+                        window.event.cancelBubble = true;
+                    }
+                }
+            });
+
+            $('input[type=radio][name=maptypeRadios]').change(function () {
+                map.setMapTypeId(this.value);//alert(this.value);hybrid
+            });
+            $("input[type=radio][name=maptypeRadios][value='roadmap']").prop("checked", true);
+
+            $('#goOther').on('click', function (e) {
+                e.preventDefault();
+                window.location.href = "Default.html";
+                return false
+            });
+
+            $('#icdEditClose').on('click', function (e) {
+                e.preventDefault();
+                uploadpicResponseArr = new Array();
+                uploadPicCounter = 0;
+                if (reWaitInterval != null) {
+                    clearInterval(reWaitInterval);
+                    reWaitInterval = null;
+                }
+                $('#icdEditModal').modal('hide');
+                return false
+            });
+
+            $('#icdEditSave').on('click', function (e) {
+                e.preventDefault();
+
+                var typeOfRain = $("input[type=radio][name=icdEditTypeOfRain]:checked");
+
+                if (typeOfRain.length == 0) {
+                    fcsAlert('', i18next.t('incident.msg.select') + ' ' + i18next.t('incident.table.column.rainfall'), 'warning');
+                    return false;
+                }
+                var typeOfFlooding = $("input[type=checkbox][name=icdEditTypeOfFlooding]:checked");
+                if (typeOfFlooding.length == 0) {
+                    fcsAlert('', i18next.t('incident.msg.select') + ' ' + i18next.t('incident.table.column.flooding'), 'warning');
+                    return false;
+                }
+
+                $('#icdEditSave').attr('disabled', 'disabled');
+                uploadpicArr = new Array();
+                for (i = 0; i < $('input[type=file].uploadFile').length; i++) {
+                    var file = $('input[type=file].uploadFile')[i].files[0];
+                    if (file != null) {
+                        uploadpicArr.push(file);
+                    }
+                }
+                if (uploadpicArr.length > 0) {
+                    uploadPic();
+                }
+                else {
+                    uploadReport();
+                }
+
+                return false;
+            });
+
+            $('#fcsAdd').on('click', function (e) {
+                e.preventDefault();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                openIcdEdit(true);
+                return false;
+            });
+
+            if (sessionStorage.getItem('fcs_id') != null) {
+                $('#icdDivFilterMyReport,#fcsAdd').removeClass('d-none').addClass('d-block');
+            }
+            else {
+                $('#icdDivFilterMyReport,#fcsAdd').removeClass('d-block').addClass('d-none');
+            };
+            var limit = 3;
+
+            $('input[type=checkbox][name=icdEditTypeOfFlooding]').change(function () { //TypeOfFlooding up to 3
+                if ($('input[type=checkbox][name=icdEditTypeOfFlooding]:checked').length > 3) {
+                    this.checked = false;
+                }
+            });
+
+            //$(".imgAdd").click(function () {
+            //    $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary2">' +
+            //        i18next.t('incident.btn.upload') + '<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+            //});
+            $(document).on("click", "i.del", function () {
+                $(this).parent().remove();
+            });
+            $(function () {
+                $(document).on("change", ".uploadFile", function (e) {
+                    e.preventDefault();
+                    var uploadFile = $(this);
+                    var files = !!this.files ? this.files : [];
+                    if (!files.length || !window.FileReader) return false; // no file selected, or no FileReader support
+
+                    if (/^image/.test(files[0].type)) { // only image file
+                        if (files[0].size > 1024 * 1024 * 1.9) {
+                            fcsAlert('', i18next.t('incident.msg.photoLimit'), 'error');
+                            return false;
+                        }
+                        else {
+                            var reader = new FileReader(); // instance of the FileReader
+                            reader.readAsDataURL(files[0]); // read the local file
+
+                            reader.onloadend = function () { // set image data as background of div
+                                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                                uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                            }
+                        }
+                    } else {
+                        fcsAlert('', i18next.t('incident.msg.selectPhoto'), 'error');
+                        return false;
+                    }
+                    return false;
+                });
+            });
+            $("#icdEditPosLon,#icdEditPosLat").on("change", function (e) {
+                e.preventDefault();
+                var tempPos = {
+                    lat: parseFloat($('#icdEditPosLat').val()),
+                    lng: parseFloat($('#icdEditPosLon').val())
+                };
+                if (tempPos.lat <= 180 && tempPos.lng <= 180) {
+                    map2.setCenter(tempPos);
+                    marker2.setPosition(tempPos);
+                }
+                infoWindow2.close();
+                return false;
+            });
+            //$("#icdEditPosLon,#icdEditPosLat").on("keypress keyup blur", function (event) {
+            //    $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            //    //var charCode = (evt.which) ? evt.which : event.keyCode
+            //    //if (
+            //    //    (charCode != 45 || $(element).val().indexOf('-') != -1) &&
+            //    //    (charCode != 46 || $(element).val().indexOf('.') != -1) &&
+            //    //    (charCode < 48 || charCode > 57))
+            //    //    evt.preventDefault();
+            //    //return true;
+            //    if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which != 45 || $(this).val().indexOf('-') == -1) && (event.which < 48 || event.which > 57)) {
+            //        event.preventDefault();
+            //    }
+            //}).on("change", function (e) {
+            //    e.preventDefault();
+            //    var tempPos = {
+            //        lat: parseFloat($('#icdEditPosLat').val()),
+            //        lng: parseFloat($('#icdEditPosLon').val())
+            //    };
+            //    if (tempPos.lat <= 180 && tempPos.lng <= 180) {
+            //        map2.setCenter(tempPos);
+            //        marker2.setPosition(tempPos);
+            //    }
+            //    return false;
+            //});
+            $('#icdEditLocMove').on('click', function (e) {
+                e.preventDefault();
+                var tempPos = {
+                    lat: parseFloat($('#icdEditPosLat').val()),
+                    lng: parseFloat($('#icdEditPosLon').val())
+                };
+                if (tempPos.lat <= 180 && tempPos.lng) {
+                    map2.setCenter(tempPos);
+                    marker2.setPosition(tempPos);
+                }
+                return false;
+            });
+        });
+
+        function delReport(row) {
+            //fcsAlert('Incident', 'This feature is not yet implemented', 'warning');
+            var urlstr = url + 'api/services/app/Incidents/Delete?Id=' + row.id;
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                "method": 'delete',
+                //data: {
+                //    id: row.id
+                //},
+                beforeSend: function (request) {
+                    request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json').setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('accessToken'));
+
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        if (r.success) {
+                            var data = sessionStorage.getItem('fcs_incidentdata');
+                            $('#loading_table').show();
+                            if (data != null) {
+                                var incidentData = JSON.parse(data);
+                                var incidentDataNew = new Array();
+                                table.rows().remove();
+                                for (var i in incidentData) {
+                                    if (incidentData[i].id != row.id) {
+                                        incidentDataNew.push(incidentData[i]);
+                                    }
+                                }
+                                sessionStorage.setItem("fcs_incidentdata", JSON.stringify(incidentDataNew));
+                                table.rows.add(incidentDataNew);
+                                table.columns.adjust().draw();
+                                drawIncidentMap(incidentDataNew);
+                                $('#loading_table').hide();
+                                fcsAlert('', i18next.t('incident.msg.delsuc'), 'success');
+                            }
+                            else {
+                                loadIncidents(true);
+                            }
+                        }
+                        else {
+                            fcsAlert('', i18next.t('incident.msg.delfail'), 'error');
+                        }
+
+                    }
+                    catch (ex) {
+                        console.log(ex);
+                        fcsAlert('', i18next.t('incident.msg.delfail'), 'error');
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                    fcsAlert('', i18next.t('incident.msg.delfail'), 'error');
+                }
+            });
+        }
+
+        function loadSessionIncidentData() {
+            var data = sessionStorage.getItem('fcs_incidentdata');
+            if (data != null) {
+                var incidentData = JSON.parse(data);
+                table.rows().remove();
+                table.rows.add(incidentData);
+                table.columns.adjust().draw();
+                drawIncidentMap(incidentData);
+                $('#loading_table').hide();
+                timeItvlSel(start, end);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function timeItvlSel(st, et) {
+            $('#spantitvl').html(st.format('YYYY/MM/DD') + '-' + et.format('YYYY/MM/DD'));
+            start = moment(new Date(st.format('YYYY/MM/DD') + " 00:00:01")).tz('Europe/London');
+            end = moment(new Date(et.format('YYYY/MM/DD') + " 23:59:59")).tz('Europe/London');
+            filterData();
+        }
+
+        /**
+        * Datatablee filter
+        */
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var inItvl = false;
+                var check = moment(data[2]).tz('Europe/London');
+                if (check.isBetween(start, end)) {
+                    inItvl = true;
+                }
+                return inItvl;
+            }
+        );
+
+        function filterData() {
+            table.columns().search('').draw();
+            var s = false;
+            if (sessionStorage.getItem('fcs_id') != null) {
+                if ($("#icdFilterMyReport2").prop('checked')) {
+                    table.columns(4).search(sessionStorage.getItem('fcs_id'));
+                    s = true;
+                }
+                //if ($('#icdFilterMyReport').bootstrapSwitch('state')) {
+                //    table.columns(4).search(sessionStorage.getItem('fcs_id'));
+                //    s = true;
+                //}
+            }
+            if ($('#cboIncidentTypeFlooding').val() != '-1') {
+                table.columns(6).search($('#cboIncidentTypeFlooding').val());
+                s = true;
+            }
+            if ($('#cboIncidentTypeRainfall').val() != '-1') {
+                table.columns(0).search($('#cboIncidentTypeRainfall').val());
+                s = true;
+            }
+            if (s) {
+                table.draw();
+            }
+            else {
+                table.columns().search('').draw();
+            }
+        }
+
+        function imgAddClick(e) {
+            $(e).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary2">' +
+                i18next.t('incident.btn.upload') + '<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+        }
+
+        function openIcdEdit(n) {
+            checkLoginToken();
+            $('#icdEditSave').removeAttr('disabled');
+            showLocationOperatorText(marker2);
+            $('#icdEditInfo').html('');
+            $('#icdEditAct').html(n ? i18next.t('btn.new') : i18next.t('btn.edit'));
+            $('input[type=radio][name=icdEditTypeOfRain],input[type=checkbox][name=icdEditTypeOfFlooding],input[type=radio][name=icdEditFloodExtent]').prop('checked', false);
+            $('input[type=radio][name=icdEditFloodDepth],input[type=radio][name=icdEditFloodFrequency],input[type=radio][name=icdEditTypeOfSpaceFlooded],input[type=radio][name=icdEditWaterClarity]').prop('checked', false);
+            $("#icdEditSignOfDamage,#icdEditSignOfObstruction,#icdEditReporterImpacted").bootstrapToggle('off');
+            $('#icdEditPicture,#icdEditPictureNew').html('');
+            $('#icdEditPictureNew').append($('<i>').attr('class', 'fa fa-plus imgAdd').attr('onclick', 'imgAddClick(this)'));
+            //$('#icdEditPictureRow').removeAttr("style");
+            $('#icdEditPosLon').val(mpos2.lng.toFixed(7));
+            $('#icdEditPosLat').val(mpos2.lat.toFixed(7));
+
+            if (selRow != null) {
+                $('#icdEditInfo').html(' Reported ' + moment(selRow.date).tz('Europe/London').format("YYYY/MM/DD-HH:mm") + ' by ' + selRow.username);
+                $('input[type=radio][name=icdEditTypeOfRain][value="' + selRow.typeOfRain + '"]').prop('checked', true);
+                for (var i in selRow.floodTypes) {
+                    $('input[type=checkbox][name=icdEditTypeOfFlooding][value="' + selRow.floodTypes[i].typeOfFlood + '"]').prop('checked', true);
+                }
+                $("#icdEditSignOfDamage").prop('checked', selRow.anySignOfDamage).change();
+                $("#icdEditSignOfObstruction").prop('checked', selRow.anySignOfObstruction).change();
+                $("#icdEditReporterImpacted").prop('checked', selRow.areYouImpacted).change();
+                $('input[type=radio][name=icdEditFloodExtent][value="' + selRow.floodExtent + '"]').prop('checked', true);
+                $('input[type=radio][name=icdEditFloodDepth][value="' + selRow.floodDepth + '"]').prop('checked', true);
+                $('input[type=radio][name=icdEditFloodFrequency][value="' + selRow.frequencyOfFlood + '"]').prop('checked', true);
+                $('input[type=radio][name=icdEditTypeOfSpaceFlooded][value="' + selRow.typesOfSpaceFlooded + '"]').prop('checked', true);
+                $('input[type=radio][name=icdEditWaterClarity][value="' + selRow.waterClarity + '"]').prop('checked', true);
+
+                if (selRow.locationDtos.length > 1) {
+                    $('#icdEditPosLon').val(selRow.locationDtos[0].longitude);
+                    $('#icdEditPosLat').val(selRow.locationDtos[0].latitude);
+                }
+
+                var picArr = new Array();
+                for (var i in selRow.pictureDtos) {
+                    var imgSrc = selRow.pictureDtos[i].url != null ? selRow.pictureDtos[i].url : selRow.pictureDtos[i].physicalPath;
+                    if (imgSrc != null) {
+                        picArr.push(imgSrc);
+                    }
+                }
+
+                for (var i in picArr) {
+                    $('#icdEditPicture').append(
+                        $('<div>').attr('class', 'col-sm-2 imgUp').append(
+                            $('<div>').attr('class', 'imagePreview').append(
+                                $('<img>').attr('class', 'img-fluid img-thumbnail')
+                                    .attr('src', picArr[i])
+                                //.attr('style', 'height:150px;')
+                            ).append(
+                                $('<i>').attr('class', 'fa fa-times del')
+                            )
+                        )
+                    );
+                }
+            }
+
+            var tempPos = {
+                lat: parseFloat($('#icdEditPosLat').val()),
+                lng: parseFloat($('#icdEditPosLon').val())
+            };
+            map2.setCenter(tempPos);
+            marker2.setPosition(tempPos);
+            //marker2.position = tempPos;
+            $('#icdEditModal').modal();
+        }
+
+        function openIcdView() {
+            $('#icdViewTypeOfRain,#icdViewTypeOfFlood,#icdViewInfo,#icdViewSignOfDamage,#icdViewSignOfObstruction,#icdViewFloodExtent').html('');
+            $('#icdViewFloodDepth,#icdViewFloodFrequency,#icdViewTypeOfSpaceFlooded,#icdViewWaterClarity,#icdViewReporterImpacted').html('');
+            $('#icdViewPicture').html('').removeAttr("style");
+            $('#icdViewPictureRow').removeAttr("style");
+            if (selRow != null) {
+                var picArr = new Array();
+                for (var i in selRow.pictureDtos) {
+                    var imgSrc = selRow.pictureDtos[i].url != null ? selRow.pictureDtos[i].url : selRow.pictureDtos[i].physicalPath;
+                    if (imgSrc != null) {
+                        picArr.push(imgSrc);
+                    }
+                }
+                if (picArr.length > 0) {
+                    $('#icdViewPicture').attr('style', 'display: inline-block;white-space: normal;padding:0px;margin:0px;');
+                    $('#icdViewPictureRow').attr('style', 'height:170px;overflow-x:scroll;white-space: nowrap;');
+                }
+                for (var i in picArr) {
+                    $('#icdViewPicture').append(
+                        $('<a>').attr('href', picArr[i]).attr('data-toggle', 'lightbox').attr('data-gallery', 'icdViewInfoGallery').append(
+                            $('<img>').attr('class', 'img-fluid img-thumbnail')
+                                .attr('src', picArr[i])
+                                .attr('style', 'height:150px;')
+                        )
+                    );
+                }
+                var rainType = getRainfallTypeImg(selRow.typeOfRain);
+                $('#icdViewTypeOfRain').append(
+                    $('<div>').attr('class', 'text-center').attr('style', 'float:left;').append(
+                        $('<div>').append(
+                            $('<img>').attr('class', 'img-fluid img-thumbnail').attr('src', rainType.s).attr('style', 'height:80px;')
+                        )
+                    ).append(
+                        $('<div>').append(
+                            $('<strong>').html(rainType.t).attr('style', 'font-size:11px;')
+                        )
+                    )
+                );
+                for (var i in selRow.floodTypes) {
+                    var floodType = getFloodTypeImg(selRow.floodTypes[i].typeOfFlood);
+                    $('#icdViewTypeOfFlood').append(
+                        $('<div>').attr('class', 'text-center').attr('style', 'float:left;').append(
+                            $('<div>').append(
+                                $('<img>').attr('class', 'img-fluid img-thumbnail').attr('src', floodType.s).attr('style', 'height:80px;')
+                            )
+                        ).append(
+                            $('<div>').append(
+                                $('<strong>').html(floodType.t).attr('style', 'font-size:11px;')
+                            )
+                        )
+                    );
+                }
+                $('#icdViewInfo').html(' ' + i18next.t("incident.report.reported") + ' ' + moment(selRow.date).tz('Europe/London').format("YYYY/MM/DD-HH:mm") + ' ' + i18next.t("incident.report.by") + ' ' + selRow.username);
+                $('#icdViewSignOfDamage').html(selRow.anySignOfDamage ? i18next.t("btn.yes") : i18next.t("btn.no"));
+                $('#icdViewSignOfObstruction').html(selRow.anySignOfObstruction ? i18next.t("btn.yes") : i18next.t("btn.no"));
+                $('#icdViewFloodExtent').html(getFloodExtent(selRow.floodExtent));
+                $('#icdViewFloodDepth').html(getFloodDepth(selRow.floodDepth));
+                $('#icdViewFloodFrequency').html(getFloodFrequency(selRow.frequencyOfFlood));
+                $('#icdViewTypeOfSpaceFlooded').html(getTypesOfSpaceFlooded(selRow.typesOfSpaceFlooded));
+                $('#icdViewWaterClarity').html(getWaterClarity(selRow.waterClarity));
+                $('#icdViewReporterImpacted').html(selRow.areYouImpacted ? i18next.t("btn.yes") : i18next.t("btn.no"));
+            }
+            $('#icdViewModal').modal();
+        }
+
+        function getFloodExtent(v) {
+            var val = '-';
+            if (v == 0) {
+                val = i18next.t("incident.type.floodExtent.small");
+            } else if (v == 1) {
+                val = i18next.t("incident.type.floodExtent.half");
+            } else if (v == 2) {
+                val = i18next.t("incident.type.floodExtent.completely");
+            }
+            return val;
+        }
+
+        function getFloodDepth(v) {
+            var val = '-';
+            if (v == 0) {
+                val = i18next.t("incident.type.floodDepth.2");
+            } else if (v == 1) {
+                val = i18next.t("incident.type.floodDepth.10");
+            } else if (v == 2) {
+                val = i18next.t("incident.type.floodDepth.25");
+            } else if (v == 3) {
+                val = i18next.t("incident.type.floodDepth.50");
+            } else if (v == 4) {
+                val = i18next.t("incident.type.floodDepth.higher");
+            }
+            return val;
+        }
+        function getFloodFrequency(v) {
+            var val = '-';
+            if (v == 0) {
+                val = i18next.t("incident.type.floodFrequency.first");
+            } else if (v == 1) {
+                val = i18next.t("incident.type.floodFrequency.occasionally");
+            } else if (v == 2) {
+                val = i18next.t("incident.type.floodFrequency.regularly");
+            } else if (v == 3) {
+                val = i18next.t("incident.type.floodFrequency.non");
+            }
+            return val;
+        }
+        function getTypesOfSpaceFlooded(v) {
+            var val = '-';
+            if (v == 0) {
+                val = i18next.t("incident.type.spaceFlooded.private");
+            } else if (v == 1) {
+                val = i18next.t("incident.type.spaceFlooded.public");
+            } else if (v == 2) {
+                val = i18next.t("incident.type.spaceFlooded.both");
+            }
+            return val;
+        }
+        function getWaterClarity(v) {
+            var val = '-';
+            if (v == 0) {
+                val = i18next.t("incident.type.waterClarity.clear");
+            } else if (v == 1) {
+                val = i18next.t("incident.type.waterClarity.muddy");
+            } else if (v == 2) {
+                val = i18next.t("incident.type.waterClarity.sewage");
+            }
+            return val;
+        }
+
+        function fillInfoWindowData() {
+            $('#icdVTitle').html(i18next.t('incident.table.title'));
+            $('#icdVTRain').html(i18next.t('incident.table.column.rainfall'));
+            $('#icdVTFlood').html(i18next.t('incident.table.column.flooding'));
+            $('#icdVTAct').html(i18next.t('btn.viewDetail'));
+            $('#icdInfo,#icdTypeOfRain,#icdTypeOfFlood,#icdPicture').html('');
+            $("#icdPicture").removeAttr("style");
+            //$('#icdTypeOfRain').remove();
+            if (selRow != null) {
+                $('#icdInfo').html(' ' + moment(selRow.date).tz('Europe/London').format("YYYY/MM/DD-HH:mm") + ' ' + i18next.t("incident.report.by") + ' ' + selRow.username);
+                var rainType = getRainfallTypeImg(selRow.typeOfRain);
+                $('#icdTypeOfRain').append(
+                    $('<img>').attr('class', 'img-fluid img-thumbnail')
+                        .attr('src', rainType.s).attr('title', rainType.t)
+                        .attr('style', 'width:45px;'));
+                for (var i in selRow.floodTypes) {
+                    var floodType = getFloodTypeImg(selRow.floodTypes[i].typeOfFlood);
+                    $('#icdTypeOfFlood').append(
+                        $('<img>').attr('class', 'img-fluid img-thumbnail')
+                            .attr('src', floodType.s).attr('title', floodType.t)
+                            .attr('style', 'width:45px;'));
+                }
+                //console.log(selRow.pictureDtos);
+                var picArr = new Array();
+                for (var i in selRow.pictureDtos) {
+                    var imgSrc = selRow.pictureDtos[i].url != null ? selRow.pictureDtos[i].url : selRow.pictureDtos[i].physicalPath;
+                    if (imgSrc != null) {
+                        picArr.push(imgSrc);
+                    }
+                }
+                if (picArr.length == 1 || picArr.length == 2) {
+                    $('#icdPicture').append($('<span>').attr('style', 'width:100px;'));
+                }
+                for (var i in picArr) {
+                    $('#icdPicture').append(
+                        $('<a>').attr('href', picArr[i]).attr('data-toggle', 'lightbox').attr('data-gallery', 'icdInfoGallery').append(
+                            $('<img>').attr('class', 'img-fluid img-thumbnail')
+                                .attr('src', picArr[i])
+                                .attr('style', 'width:100px;')
+                        )
+                    );
+                }
+            }
+        }
+        function getFloodTypeImg(rt) {
+            var d = new Object();
+            d.s = 'images/flooding_no.png';
+            d.t = i18next.t("incident.type.flooding.noFlooding");
+            if (rt == '1') {
+                d.s = 'images/flooding_street.png';
+                d.t = i18next.t("incident.type.flooding.streetFlooding");
+            }
+            else if (rt == '2') {
+                d.s = 'images/flooding_park.png';
+                d.t = i18next.t("incident.type.flooding.parksFlooding");
+            }
+            else if (rt == '3') {
+                d.s = 'images/flooding_house.png';
+                d.t = i18next.t("incident.type.flooding.houseFlooding");
+            }
+            else if (rt == '4') {
+                d.s = 'images/flooding_garden.png';
+                d.t = i18next.t("incident.type.flooding.gardenFlooding");
+            }
+            else if (rt == '5') {
+                d.s = 'images/river-flooding.png';
+                d.t = i18next.t("incident.type.flooding.riverFlooding");
+            }
+            else if (rt == '6') {
+                d.s = 'images/flooding_river.png';
+                d.t = i18next.t("incident.type.flooding.riverLevelRising");
+            }
+            else if (rt == '7') {
+                d.s = 'images/sewer-blocked.png';
+                d.t = i18next.t("incident.type.flooding.sewerBlocked");
+            }
+            return d;
+        }
+        function getRainfallTypeImg(rt) {
+            var d = new Object();
+            d.s = 'images/rain-none.png';
+            d.t = i18next.t("incident.type.rainfall.noRainfall");
+            if (rt == '1') {
+                d.s = 'images/rain-drizzle.png';
+                d.t = i18next.t("incident.type.rainfall.drizzle");
+            }
+            else if (rt == '2') {
+                d.s = 'images/rain-medium.png';
+                d.t = i18next.t("incident.type.rainfall.mediumIntensity");
+            }
+            else if (rt == '3') {
+                d.s = 'images/rain-heavy.png';
+                d.t = i18next.t("incident.type.rainfall.heavyRainfall");
+            }
+            else if (rt == '4') {
+                d.s = 'images/rain-torrential.png';
+                d.t = i18next.t("incident.type.rainfall.torrential");
+            }
+            return d;
+        }
+        var markerCluster;
+        var iconLevei1 = 'images/marker_6_f_xs.png';
+        var iconLevel2 = 'images/marker_6_f_s.png';
+        var iconLevel3 = 'images/marker_6_f_m.png';
+        var iconLevel4 = 'images/marker_6_f_l.png';
+        function drawIncidentMap(data) {
+            var lastLatLng;
+            for (var i in data) {
+                var r = data[i];
+                if (r.hasOwnProperty('locationDtos')) {
+                    var latLng = new google.maps.LatLng(r.locationDtos[0].latitude, r.locationDtos[0].longitude);
+                    //iconLevel4 = getRainfallTypeImg(r.typeOfRain).s;
+                    var myData = false;
+                    if (sessionStorage.getItem('fcs_id') != null) {
+                        if (data[i].creatorUserId == sessionStorage.getItem('fcs_id')) {
+                            myData = true;
+                        }
+                    }
+                    iconLevei1 = myData ? 'images/marker_5_f_xs.png' : 'images/marker_6_f_xs.png';
+                    iconLevel2 = myData ? 'images/marker_5_f_s.png' : 'images/marker_6_f_s.png';
+                    iconLevel3 = myData ? 'images/marker_5_f_m.png' : 'images/marker_6_f_m.png';
+                    iconLevel4 = myData ? 'images/marker_5_f_l.png' : 'images/marker_6_f_l.png';
+                    var iconLvl = iconLevel2;
+                    if (zoomLevel == 1) { iconLvl = iconLevel1 }
+                    else if (zoomLevel == 2) { iconLvl = iconLevel2 }
+                    else if (zoomLevel == 3) { iconLvl = iconLevel3 }
+                    else if (zoomLevel == 4) { iconLvl = iconLevel4 }
+                    var marker = new google.maps.Marker({
+                        position: latLng,
+                        icon: iconLvl,
+                        map: map,
+                        iid: r.id,
+                        cusX: r.locationDtos[0].longitude,
+                        cusY: r.locationDtos[0].latitude
+                    });
+                    marker.iconLevel1 = iconLevei1;
+                    marker.iconLevel2 = iconLevel2;
+                    marker.iconLevel3 = iconLevel3;
+                    marker.iconLevel4 = iconLevel4;
+                    lastLatLng = latLng;
+                    google.maps.event.addListener(marker, 'click', function () {
+                        //selSensorName = this.cusName;
+                        infoWindow.open(map, this);
+                        var tempRow = null;
+                        var tempRr = null;
+                        var tempIdx = -1;
+                        //console.log(table.rows({ filter: 'applied' }).nodes().length + ',' + table.rows({ filter: 'applied' }).data().length);
+                        for (var i in table.rows({ filter: 'applied' }).data()) {
+                            if (this.iid == table.rows({ filter: 'applied' }).data()[i].id) {
+                                tempRow = table.rows({ filter: 'applied' }).data()[i];
+                                tempRr = table.rows({ filter: 'applied' }).nodes()[i];
+                                tempIdx = i;
+                                break;
+                            }
+
+                        }
+
+                        if (selRow != tempRow) {
+                            if (selectTr != null) {
+                                selectTr.removeClass('selected');
+                                selectTr = null;
+                            }
+                            selRow = null;
+                            selRow = tempRow;
+                            selectTr = $(tempRr);
+
+                            $(tempRr).addClass('selected');
+                            if (table.page.info().length != -1 && tempIdx != -1) {
+                                var pageIdx = parseInt(tempIdx / table.page.info().length, 10);
+                                table.page(pageIdx).draw('page');
+                            }
+                        }
+                    });
+                    markers.push(marker);
+                }
+            }
+            //var zoom=zoom==-1?14:zoom;
+            try {
+                if (markerCluster != null) {
+                    markerCluster.clearMarkers();
+                }
+
+                markerCluster = new MarkerClusterer(map, markers,
+                    { maxZoom: 17, imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+                markerCluster.setGridSize(200);
+            }
+            catch (ex) {
+                console.log(ex);
+            }
+
+            //markerCluster.setMaxZoom(14);
+            //google.maps.event.addListener(markerCluster, "click", function (c) {
+            //    console.log("&mdash;Number of managed markers in cluster: " + c.getSize());
+            //    console.log(map.getZoom());
+            //    //var m = c.getMarkers();
+            //    //var p = [];
+            //    //for (var i = 0; i < m.length; i++) {
+            //    //    p.push(m[i].getPosition());
+            //    //}
+            //    //console.log("&mdash;Locations of managed markers: " + p.join(", "));
+            //    //if (map.getZoom() >= 21) {
+            //    //    if (c.getSize() > 0) {
+            //    //        console.log(c.getMarkers()[0]);
+            //    //        new google.maps.event.trigger(c.getMarkers()[0], 'click');
+            //    //    }
+            //    //}
+            //});
+        }
+
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+        function loadIncidents(s) {
+            if (s) {
+                $('#loading_table').show();
+            }
+            table.rows().remove();
+            table.columns.adjust().draw();
+            var urlstr = url + 'api/services/app/Incidents/GetAll';
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                data: {
+                    MaxResultCount: 10000
+                },
+                beforeSend: function (request) {
+                    request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json');
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        var incidentData = new Array();
+                        for (var i in r.result.items) {
+                            var incident = new Object();
+                            var d = r.result.items[i];
+                            var typeOfRainName = getRainfallTypeImg(0).t;
+                            if (d.incident.typeOfRain >= 1 && d.incident.typeOfRain <= 4) {
+                                typeOfRainName = getRainfallTypeImg(d.incident.typeOfRain).t;
+                            }
+                            var floodTypeHtml = '';
+
+                            for (var j in d.incident.floodTypes) {
+                                var floodType = getFloodTypeImg(d.incident.floodTypes[j].typeOfFlood);
+                                floodTypeHtml += floodType.t + ",";
+                            }
+                            d.incident.floodTypes2 = floodTypeHtml;
+                            var locationHtml = '';
+                            if (d.incident.locationDtos.length > 0) {
+                                locationHtml = "(" + d.incident.locationDtos[0].longitude + "," + d.incident.locationDtos[0].latitude + ")";
+                            }
+                            d.incident.locationDtos2 = locationHtml;
+                            d.incident.typeOfRainName = typeOfRainName;
+                            incident = d.incident;
+
+                            incident.username = d.username;
+                            var floodingArr = new Array();
+                            var floodingArrName = new Array();
+                            for (var j in incident.floodTypes) {
+                                floodingArr.push(incident.floodTypes[j].typeOfFlood);
+                                floodingArrName.push(getFloodTypeImg(incident.floodTypes[j].typeOfFlood).t);
+                            }
+
+                            incident.floodDepth2 = getFloodDepth(incident.floodDepth);
+                            incident.floodExtent2 = getFloodExtent(incident.floodExtent);
+                            incident.typesOfSpaceFlooded2 = getTypesOfSpaceFlooded(incident.typesOfSpaceFlooded);
+                            incident.frequencyOfFlood2 = getFloodFrequency(incident.frequencyOfFlood);
+                            incident.waterClarity2 = getWaterClarity(incident.waterClarity);
+
+                            incident.typeOfFloodings = JSON.stringify(incident.floodTypes);
+                            incident.typeOfFloodings2 = JSON.stringify(floodingArrName);
+
+                            if (incident.hasOwnProperty('locationDtos')) {
+                                if (moment(incident.date).tz('Europe/London').year() > 1000) {
+                                    incidentData.push(incident);
+                                }
+                            }
+                        }
+
+                        table.rows.add(incidentData);
+                        table.columns.adjust().draw();
+                        drawIncidentMap(incidentData);
+                        sessionStorage.setItem("fcs_incidentdata", JSON.stringify(incidentData));
+                        $('#loading_table').hide();
+                    }
+                    catch (ex) {
+                        console.log(ex);
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZvwaIH10Bf51PUyUdd7oSuaVwB0EGeq4&callback=initMap&v=3&amp;sensor=false">
+    </script>
+</body>
+</html>

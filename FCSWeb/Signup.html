@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title data-i18n="signup.pageTitle" id="pageTitle">
+    </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/adminlte.css" rel="stylesheet" />
+    <!--<link href="assets/css/now-ui-dashboard.min.css?v=1.4.0" rel="stylesheet"/>-->
+    <!-- iCheck -->
+    <link rel="stylesheet" href="assets/js/plugins/blue.css">
+    <link rel="stylesheet" href="assets/js/plugins/sweetalert2.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition login-page">
+    <div class="register-box" style="width:500px;margin-top:5px;">
+        <div class="register-logo">
+            <a href="Default.html"><b data-i18n="sidemenu.floodCitiSense"></b></a>
+        </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg" data-i18n="signup.title"></p>
+                <form data-toggle="validator" role="form">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="fcsUserName"  required data-toggle="tooltip" >
+                        <div class="input-group-append">
+                            <span class="fa fa-user input-group-text"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="fcsFirstName"  required data-toggle="tooltip" >
+                        <div class="input-group-append">
+                            <span class="fa fa-user input-group-text"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="fcsLastName" required data-toggle="tooltip" >
+                        <div class="input-group-append">
+                            <span class="fa fa-user input-group-text"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" id="fcsEmailAddress" required data-toggle="tooltip" >
+                        <div class="input-group-append">
+                            <span class="fa fa-envelope input-group-text"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="fcsPassword" required data-toggle="tooltip" >
+                        <div class="input-group-append" style=" cursor: pointer">
+                            <span class="fa fa-eye-slash  input-group-text toggle-password"></span>
+                        </div>
+                    </div>
+                    <label data-i18n="signup.experienceTitle"></label>
+                    <div class="input-group mb-3">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="0" name="exp" checked>
+                                <label class="form-check-label" data-i18n="signup.none"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="1" name="exp">
+                                <label class="form-check-label" data-i18n="signup.some"></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="2" name="exp">
+                                <label class="form-check-label" data-i18n="signup.expert"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="terms" data-error="Before you wreck yourself" required>
+                                <span data-i18n="signup.tpTitle"></span>
+                            </label>
+                            <span class="badge badge-warning" style="cursor: pointer;" id="tac" data-i18n="signup.tc"></span> <span data-i18n="signup.and"></span>
+                            <span class="badge badge-warning" style="cursor: pointer;" id="pp" data-i18n="signup.pp"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-6">
+                            <button type="submit" id="fcsSignup" class="btn btn-info btn-block btn-flat" data-i18n="signup.createAccount"></button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-default btn-block btn-flat" onclick="history.back(); return false;" data-i18n="btn.cancel"></button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <!--<div class="social-auth-links text-center">
+                    <p>- <span data-i18n="login.or"></span> -</p>
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fa fa-facebook mr-2"></i>
+                        <span data-i18n="login.singinFacebook"></span>
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fa fa-google-plus mr-2"></i>
+                        <span data-i18n="login.singinGoogle"></span>
+                    </a>
+                </div>-->
+                <a href="Login.html" class="text-center" data-i18n="signup.alreadyMember"></a>
+            </div>
+            <!-- /.form-box -->
+            <div class="overlay" id="loading_table">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    <div class="modal fade bd-example-modal-lg" id="modalTAC" tabindex="-1" role="dialog" aria-labelledby="modalTACLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTACLabel">Terms and Conditions</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Thank you for your interest in contributing data and/or other content to the geo-database of Flood CitiSense, a mobile application developed within the ENSUF/FFG-funded FloodCitiSense project (No. 860918). By using the Flood CitiSense app, you accept the following terms and conditions. Please read them carefully before using the app.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>General information</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            This Agreement is made between you (“the user”) and the International Institute for Applied Systems Analysis, Schlossplatz 1, 2361 Laxenburg, Austria (“IIASA”), a partner in the FloodCitiSense project. FloodCitiSense is a research project to develop an early warning system for pluvial flooding involving multiple actors including citizens. Via the FloodCitiSense software application (“the app”), users can report pluvial flooding incidents at specific geographical locations in Belgium, the Netherlands and the UK, optionally answer a few short questions to describe the incident, and optionally submit photographs (“contributions”). The collected data are then verified and processed.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Legal age</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            There is no age restriction for the download and use of the app.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Data manipulation</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Any form of, or attempt at, data manipulation is strictly prohibited and will result in a permanent ban from the app.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Rights of third parties</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Your data contribution must not infringe on any third party rights. By submitting contributions, the users indicate that they have the right to authorize IIASA to use, process and make available any contributed material under these terms and conditions.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Rights and obligations</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Users must enable the GPS function of their mobile phones in order to use the application, report flooding incidents and take photographs. Contributions without a GPS-tag will not be accepted by IIASA. All the rights relating to this app, including its copyrights, trademarks or database rights belong to IIASA. Users are not allowed to copy, modify or otherwise exploit any part of the app, make derivative versions or to extract the app’s source code. Certain functions of the app require an active internet connection. IIASA is not responsible for any charges of the user’s network provider relating to the upload and/or download of any data, including roaming data charges when accessing the app outside the user’s home territory. IIASA gives no warranty and accepts no responsibility or liability for the accuracy or the completeness of the information and materials contained in the app, especially when the user did not download available updates or register in the first place. In order to minimize the risk and provide a beneficial experience, the user should always use the latest version of the software. Under no circumstances will IIASA be held responsible or liable in any way for any claims, damages, losses, expenses, costs or liabilities whatsoever resulting or arising directly or indirectly from the user’s use of or inability to use the app or the user’s reliance on the information and material in the app. IIASA is not required to include the user’s contributions in the app and may remove any contributions from the app at any time.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Assignment of rights</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            The user grants IIASA a perpetual, worldwide, unlimited in scope, no-charge, royalty-free, irrevocable and non-exclusive license to use, in particular without being limited to, copy, adapt, rent, lend, show, communicate and make available to the public (including without limitation via the internet), distribute and broadcast, in each case in an original or modified form, in any currently known or future way of exploitation, the submitted contributions in whole or in part (including its photographs), with the right to transfer these rights or to grant sublicenses to third parties. The user waives his right to be named as an author of the contribution, including in particular any photographs. The user assures that he is legally entitled to grant the above license. If any third party holds any rights on the contribution (including its photographs), the user assures that he has received permission to grant the above license on behalf of that third party, or that the third party has waived such rights in regard to the contributions, especially the photographs.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Miscellaneous</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            This contract and all rights and obligations resulting from it is subject to Austrian substantive law to the exclusion of the rules on conflicts of law and CISG. All disputes between the contracting parties in relation to this contract are subject to the exclusive jurisdiction of the competent court for the City of Vienna (Innere Stadt Wien). Any amendments to this contract shall only be valid if done in writing. If any provision in these conditions is found to be illegal or invalid by a court of competent jurisdiction or an arbitrator, that clause shall be deemed removed and the remainder shall be unaffected. The parties shall endeavor to agree on an alternative clause having like effect, as a substitute for the provision that has been removed. Our Privacy Policy is an integral part of these terms and conditions. IIASA reserves the right, to modify or replace these terms and conditions at any time. Should a modification be adopted, an adequate notice will be given to the users. By continuing to access or use the FloodCitiSense app after this notice, users agree to be bound by the revised terms and conditions. If users do not agree to the new terms and conditions, they must refrain from accessing or using the app without delay.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Contact us</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            If you have any questions about our Terms and Conditions, do not hesitate to contact us. International Institute for Applied Systems Analysis Schlossplatz 1 - A-2361 Laxenburg - Austria - Tel: + 43 2236 807 0
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="modalPP" tabindex="-1" role="dialog" aria-labelledby="modalPPLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalPPLabel">Privacy Policy</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Version 0.1
+                            <br />
+                            Thank you for your willingness to contribute to FloodCitiSense. This document aims to provide you with adequate information on the data we receive from you, how we process it, and what we make available to the public in order to comply with the requirements of the EU General Data Protection Regulation (GDPR).
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Our platform</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            The app you are using has been developed by the International Institute for Applied Systems Analysis (IIASA), Schlossplatz 1, 2361 Laxenburg, Austria as part of the ENSUF/FFG-funded FloodCitiSense project (No. 860918).
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>What is “personal data”?</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            “Personal data” means any information relating to an identified or identifiable natural person, such as their name, contact information, their location at a certain time or IP address.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Data processed by us</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            We are a scientific institute and process personal data for scientific purposes including environmental monitoring. We process personal data: for which you have given us consent for a specific purpose (Art. 6 para 1 lit a GDPR), namely for the conduction of this scientific study; that is necessary for the performance of a task carried out in the public interest (Art. 6 para 1 lit e GDPR), namely for the conduction of this scientific study; that is necessary for the purpose of the legitimate interests pursued by us or by a third party (Art. 6 para 1 lit f GDPR), e.g. avoiding legal disputes about rights in the contributions. If possible, we seek the explicit consent to the processing of data, in particular the disclosure to third parties (Art. 6 para. 1 lit. a GDPR). Below is a list of types of data the app collects. Please note that a copy of the data might be briefly stored in the server's memory for a short period. These data are temporarily stored apart from the database, managed and deleted automatically by the server's operating system and will not be accessed by us for processing, archiving, or any other reason. It is also possible through logging errors or general requests that submitted data be stored in one of the server's log files. These files are not publicly accessible and are not used for any processing, storage or data publication other than for resolving a possible software problem. These are technical necessities over which we have no control.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Registration/Login/Profile update</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            We process the following data for registration, login and profile updates for a given user, all of which is stored in the FloodCitiSense database:
+                        </span>
+                        <ul>
+                            <li>User identifier</li>
+                            <li>First name</li>
+                            <li>Last name</li>
+                            <li>Username</li>
+                            <li>Password (encrypted)</li>
+                            <li>Email address</li>
+                            <li>Telephone number</li>
+                            <li>Status of the user (active/deactivated)</li>
+                            <li>Whether the email address has been confirmed</li>
+                            <li>Last time the user logged in</li>
+                            <li>Profile picture</li>
+                            <li>Session ID</li>
+                            <li>The city chosen by the user (Birmingham, Brussels or Rotterdam)</li>
+                            <li>Number of times the incorrect password has been entered, reset each time the correct password is entered.</li>
+                            <li>None of this information will be part of any publication (e.g. data products, scientific publications, etc).</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <h4>Log data</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Whenever you use our service, we collect Log Data, or data and information (also through third party products) on your phone to identify errors in the app. Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the service, and other statistics. This data is used for identifying problems with our software and will not be published as part of the resulting data product.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Cookies</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            We use first party cookies to provide essential site functionality. Cookies are small text files that are saved by your browser and temporarily stored on your device.
+                            Provided that you have consented to the use of cookies, our website uses Google Analytics, a web analysis service of Google LLC. (“Google”). Google Analytics uses cookies to help understand how the website is being used. In order to do so, information about your visit, including parts of your IP Address, may be transmitted, stored and processed on a Google server in the USA or another non-EU state.
+                            You can also prevent the placement of cookies through the settings of your browser or by downloading and installing the browser plug-in available at the following link: <a href="http://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">http://tools.google.com/dlpage/gaoptout?hl=de</a>.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Submitting your incident reports</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            When you submit your incident report, the app accesses and processes the data you collected, and some additional information we use for assessing the quality of your contribution and for reproducing technical problems in case of an error. The following data are sent to the server and stored:
+                        </span>
+                        <ul>
+                            <li>User ID</li>
+                            <li>User display name</li>
+                            <li>User email address</li>
+                            <li>User position (Latitude/Longitude as well as accuracy)</li>
+                            <li>Device and app information:</li>
+                            <li>Version of FloodCitiSense app</li>
+                            <li>Smartphone operating system and version</li>
+                            <li>Device name (brand and model)</li>
+                            <li>Device serial number</li>
+                            <li>Language setting of the device</li>
+                            <li>Information on the incident:</li>
+                            <li>Incident ID</li>
+                            <li>The city chosen by the user (Birmingham, Brussels or Rotterdam)</li>
+                            <li>Type of rain</li>
+                            <li>Type of flooding</li>
+                            <li>Sign of damage</li>
+                            <li>Sign of obstruction</li>
+                            <li>Types of space flooded</li>
+                            <li>Flood extent</li>
+                            <li>Flood depth</li>
+                            <li>Frequency of flood</li>
+                            <li>Water clarity</li>
+                            <li>Are you impacted</li>
+                            <li>Date and time the report was made</li>
+                            <li>Date and time the report was uploaded</li>
+                            <li>Position (Latitude/Longitude as well as accuracy)</li>
+                            <li>Information per photo submitted:</li>
+                            <li>The submitted media file (photo)</li>
+                            <li>TenantId - City Id</li>
+                            <li>Time and date when the photo was taken</li>
+                            <li>Compass direction of the photo</li>
+                            <li>Tilt angle of the photo</li>
+                            <li>Position (Latitude/Longitude as well as accuracy)</li>
+                            <li>Information on contributions</li>
+                            <li>On the map screen, we process information on submitted reports that are within the currently displayed map view. Since this usually shows your current location, it implicitly uses your current location (latitude and longitude). This information is processed even when you are neither logged in nor registered as a user. For this purpose, we access the following data:</li>
+                            <li>User ID</li>
+                            <li>Location (Latitude, Longitude)</li>
+                            <li>Bounding coordinates for the part of the map currently shown in the app</li>
+                            <li>However, we do not permanently store this information.</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <h4>Data storage</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            The data from the FloodCitiSense application are stored and maintained on state-of-the-art web service environments hosted on rented servers at Hetzner Online GmbH, Industriestrasse 25, 91710 Gunzenhausen, Germany. We do not provide any means to access data for the hosting company other than the ways intended for every user. The environment is set up such that we restrict access to the database strictly to our trusted network and through APIs that let us choose exactly which data is accessible to which users. Regarding the use of cookies, please see above. Information about your visit, including parts of your IP Address, may be transmitted, stored and processed on a Google server in the USA or another non-EU state. After completion of the scientific project, all personal data are permanently anonymized so that traceability to individual users will not be possible unless users have explicitly asked us to safe and publish their personal data.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Data contributions</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Please be aware that we rely on you to contribute data, which does not infringe on the rights of others. Make sure you follow the instructions for the campaign/project to which you contribute, and do not submit data that could violate especially personal rights, copyright or other legislation. By contributing data, you provide us with the information requested in the app/website, but we usually also collect additional data that allows us to trace technical problems and verify the quality of the contribution. Please see the details above. By contributing data, you grant IIASA a license to use this data. Please see also our Terms and Conditions, which are available from the app.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Third parties</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Please note that we may employ the following third-party companies to facilitate our service:
+                        </span>
+                        <ul>
+                            <li>Google LLC;</li>
+                            <li>Hetzner Online GmbH. These companies will have access to your data in order to perform the tasks we assign to them, as described above. However, they are obliged to not disclose or use the information for any other purpose. Should you consent to the use of your username in our social media platforms, it will be visible in connection with the photos you submitted:</li>
+                            <li>Facebook (www.facebook.com/, operated by Facebook, Inc.,1601 Willow Road, Menlo Park, California 94025; and Facebook Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2 Ireland)</li>
+                            <li>Twitter (www.twitter.com/, operated by Twitter International Company, One Cumberland Place, Fenian Street Dublin 2, D02 AX07 Ireland; and 1355 Market Street, Suite 900, San Francisco, CA 94103, United States) Google LLC, Facebook, Twitter have their seat in the US and comply with “Privacy Shield”. According to a decision by the European Commission this guarantees an adequate level of data protection.</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <h4>Rights of the user</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            At any time, you have the right:
+                        </span>
+                        <ul>
+                            <li>to request information as to which of your data we process (Art. 15 GDPR),</li>
+                            <li>to request the rectification or erasure of your data (Art. 16 and Art. 17 GDPR),</li>
+                            <li>to restrict the processing of your data (Art. 18 GDPR),</li>
+                            <li>to request the transmission of your data (Art. 20 GDPR);</li>
+                            <li>to file a complaint with a supervisory authority, in particular the Austrian data protection authority (www.dsb.gv.at) or the data protection authority at your place of residence. You can instruct us to stop processing your data at any time using the contact data below. Even if you have agreed to the processing of data in the past, you can revoke such consent at any time (Art. 21 GDPR). Should you have questions concerning your personal data, please contact us using the contact information below.</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <h4>Third party apps and websites</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            Our app and/or website may contain links to other websites. If you click on a third-party link, you will be directed to that site. Please note that these external sites are not operated by us and we do not have any control, nor assume any responsibility for their content, privacy policies or practices. We therefore strongly advise you to review the Privacy Policy of those websites.
+                        </span>
+                    </div>
+                    <div class="row">
+                        <h4>Contact us</h4>
+                    </div>
+                    <div class="row">
+                        <span style="padding:10px;">
+                            If you have any questions about our Privacy Policy, do not hesitate to contact us. International Institute for Applied Systems Analysis (IIASA) Schlossplatz 1, A-2361 Laxenburg, Austria Tel: + 43 2236 807 0
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>-->
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="assets/js/plugins/icheck.min.js"></script>
+    <script src="assets/js/plugins/sweetalert2.all.min.js"></script>
+    <!-- FCS General purpose JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/17.0.6/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.0.0/i18nextXHRBackend.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/3.0.1/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="assets/js/fcsjs.js"></script>
+    <script>
+        var url = 'https://api.floodcitisense.eu';
+
+        function langChangeAnchor(lng) {
+            $('body').localize();
+            $('#pageTitle').localize();
+            $('#fcsUserName').attr("placeholder", i18next.t('signup.userName'));
+            $('#fcsFirstName').attr("placeholder", i18next.t('signup.firstName'));
+            $('#fcsLastName').attr("placeholder", i18next.t('signup.lastName'));
+            $('#fcsEmailAddress').attr("placeholder", i18next.t('signup.emailAddress'));
+            $('#fcsPassword').attr("placeholder", i18next.t('login.password'));
+
+            $(".toggle-password").click(function () {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var input = $('#fcsPassword');
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+        }
+        $(function () {
+            $('#loading_table').hide();
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#tac').on('click', function (e) {
+                e.preventDefault();
+                $('#modalTAC').modal();
+            });
+            $('#pp').on('click', function (e) {
+                e.preventDefault();
+                $('#modalPP').modal();
+            });
+
+            $("form").submit(function (e) {
+                e.preventDefault();
+                signupFCSAccount();
+                return false;
+            });
+            initI18next();
+        })
+
+        function signupFCSAccount() {
+            $('#loading_table').show();
+            var postData = new Object();
+            postData.name = $('#fcsLastName').val();
+            postData.surname = $('#fcsFirstName').val();
+            postData.userName = $('#fcsUserName').val();
+            postData.emailAddress = $('#fcsEmailAddress').val();
+            postData.password = $('#fcsPassword').val();
+            postData.captchaResponse = '';
+            postData.experienceLevel = parseInt($("input[name='exp']:checked").val()); //$("form input[type='radio']:checked").val();
+            //console.log(postData);
+
+            $.ajax({
+                url: url + '/api/services/app/Account/Register',
+                type: 'POST',
+                beforeSend: function (request) {
+                    request.setRequestHeader('Abp.TenantId', '1').setRequestHeader('Content-Type', 'application/json');
+                },
+                data: JSON.stringify(postData),
+                dataType: 'json',
+                processData: false,
+                contentType: 'application/json',
+
+                success: function (r) {
+                    //console.log(r);
+                    if (r.success) {
+                        if (r.result.canLogin) {
+                            $('#loading_table').hide();
+                            fcsAlertOnAfterClose('', i18next.t('signup.success'), 'success', function (e) {
+                                window.location.href = "Login.html";
+                            })
+                        } else {
+                            $('#loading_table').hide();
+                            fcsAlert('', r.result.message, 'warning')
+                        }
+                    } else {
+                        $('#loading_table').hide();
+                        fcsAlert(r.error.message, r.error.details, 'warning')
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#loading_table').hide();
+                    fcsAlert('', i18next.t('signup.failed'), 'warning')
+                    console.log(xhr.status);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

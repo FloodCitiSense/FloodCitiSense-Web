@@ -1,0 +1,1188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title data-i18n="sensor.pageTitle" id="pageTitle">
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.min.css?v=1.4.0" rel="stylesheet" />
+    <!--<link href="assets/css/adminlte.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="assets/js/plugins/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/fcs.css">
+    <link rel="stylesheet" href="assets/js/plugins/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <style>
+        .modal-lg {
+            /*//max-width: 60% !important;*/
+            max-width: 1200px !important;
+            max-height: 900px !important;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 320px;
+            width: 600px;
+            /*height: 35vh;
+            width: 30vw;*/
+        }
+    </style>
+</head>
+
+<body class="sidebar-mini" style="overflow:auto;">
+    <div class="wrapper">
+        <!--     side menu     -->
+        <div class="sidebar" data-color="blue" id="fcsSideBar">
+            <div class="logo">
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-mini"
+                   data-i18n="sidemenu.fcs">
+                </a>
+                <a href="http://floodcitisense.webflow.io/" target="_blank" class="simple-text logo-normal"
+                   data-i18n="sidemenu.floodCitiSense">
+                </a>
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+                        <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+                        <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-wrapper" id="sidebar-wrapper">
+                <div class="user d-none" id="FCSNavUser">
+                    <div class="photo">
+                        <img src="images/missingAvatar.png" />
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            <span>
+                                <span id="fcsSidebarUserName" data-i18n="nav.account"></span>
+                                <b class="caret"></b>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseExample">
+                            <ul class="nav">
+                                <li>
+                                    <a href="Profile.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.editProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.editProfile"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Pwd.html">
+                                        <span class="sidebar-mini-icon" data-i18n="sidemenu.resetProfileAbbr"></span>
+                                        <span class="sidebar-normal" data-i18n="sidemenu.resetProfile"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav" id="fcsSideMenu">
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel" id="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="http://floodcitisense.webflow.io/" target="_blank" data-i18n="sidemenu.floodCitiSense"></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+                        <ul class="navbar-nav" id="fcsNav"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="now-ui-icons location_world"></i> <span id="fcsCurrentLng">English</span></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('en'); return false;"><span data-i18n="lng.english"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('fr'); return false;"><span data-i18n="lng.french"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('nl'); return false;"><span data-i18n="lng.dutch"> </span></a>
+                                    <a class="dropdown-item" href="#" onclick="return changeLang('el'); return false;"><span data-i18n="lng.greek"> </span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="panel-header" style="height:100px;padding-top: 10px;padding-bottom: 10px;background:#00a99d">
+            </div>
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-4" style="min-height:600px;" id="fcsTable">
+                        <div class="card">
+                            <div class="card-header" id="fcsTableHeader">
+                                <div class="row">
+                                    <div class="col-8 m-0 p-0">
+                                        <label style="font-size:18px;padding-right:5px;" data-i18n="sensor.table.title"></label>
+                                        <select id="cboSensorType" class="selectpicker" data-size="7" data-style="btn btn-info btn-round" title="Sensor Type">
+                                            <!--<option value="-1"></option>-->
+                                            <option value="0" selected="selected"></option>
+                                            <option value="fcs"></option>
+                                            <option value="ea"></option>
+                                            <option value="kn"></option>
+                                            <!--<option value="na"></option>-->
+                                            <option value="flowbru"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4 m-0 p-0">
+                                        <button class="btn btn-success btn-icon float-right d-block m-0 p-0" style="width:100%;height:100%; font-size:9px;" data-toggle="tooltip" title="" id="goOther">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="toolbar" id="fcsTableToolbar">
+                                </div><!--class="table table-striped table-bordered"-->
+                                <table id="maintable" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr style="font-size:12px;">
+                                            <th data-i18n="sensor.table.column.type"></th>
+                                            <th data-i18n="sensor.table.column.sensorID"></th>
+                                            <th data-i18n="sensor.table.column.action"></th>
+                                            <th data-i18n="sensor.table.column.typeID"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr style="font-size:12px;">
+                                            <th data-i18n="sensor.table.column.type"></th>
+                                            <th data-i18n="sensor.table.column.sensorID"></th>
+                                            <th data-i18n="sensor.table.column.action"></th>
+                                            <th data-i18n="sensor.table.column.typeID"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- end content-->
+                            <div class="overlay" style="" id="loading_table">
+                                <i class="fas fa-sync-alt fa-spin"></i>
+                            </div>
+                        </div><!--  end card  -->
+                    </div>
+                    <div class="col-md-8">
+                        <!--<div id="map" style="position: absolute;width: 100%;left: 0;height:1000px;"></div>-->
+                        <!--<div class="container-fluid" style="height:100%;">-->
+                        <div class="container-fluid" style="height:100%;width:100%;position:absolute;top:0;padding:0;">
+                            <div id="map" style="min-height:600px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fcsFooter" style="padding:0;margin:0;"></div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="bigChart">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="charTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="chartZoneBig"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-plugin" id="webPlugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="fas fa-layer-group fa-2x" style="color:white;padding-top:10px;padding-bottom:10px;"></i>
+                <!--<i class="fa fa-cog fa-2x"> </i>-->
+            </a>
+            <ul class="dropdown-menu" style="width:180px;">
+                <li class="adjustments-line" style="height:170px">
+                    <a href="javascript:void(0)" class="switch-trigger">
+                        <div class="card" style="margin:0px;padding:0px;">
+                            <div class="card-header " style="margin:0px;padding:0px;">
+                                <h5 class="card-title" style="color:black;" data-i18n="gmap.mapType"></h5>
+                            </div>
+                            <div class="card-body" style="margin:0px;padding:0px;">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype1" value="roadmap" checked>
+                                        <span class="form-check-sign" data-i18n="gmap.type.roadmap"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype2" value="satellite">
+                                        <span class="form-check-sign" data-i18n="gmap.type.satellite"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype3" value="hybrid">
+                                        <span class="form-check-sign" data-i18n="gmap.type.hybrid"></span>
+                                    </label>
+                                    <label class="form-check-label" style="width:150px;">
+                                        <input class="form-check-input" type="radio" name="maptypeRadios" id="rdMaptype4" value="terrain">
+                                        <span class="form-check-sign" data-i18n="gmap.type.terrain"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                &nbsp;
+            </ul>
+        </div>
+    </div>
+    <div id="fcsAbout" style="padding:0;margin:0;">
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/plugins/bootstrap-notify.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+    <!--<script src="assets/js/plugins/jquery.dataTables.min.js"></script>-->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/now-ui-dashboard.js?v=1.4.0" type="text/javascript"></script>
+    <script src="assets/js/plugins/sweetalert2.all.min.js"></script>
+    <!-- FCS General purpose JS -->
+
+    <script src="assets/js/plugins/moment.js"></script>
+    <script src="assets/js/plugins/moment-with-locales.js"></script>
+    <script src="assets/js/plugins/moment-timezone.js"></script>
+    <script src="assets/js/plugins/moment-timezone-with-data-2012-2022.js"></script>
+    <script src="assets/js/plugins/chartjs.min.js"></script>
+    <script src="assets/js/plugins/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/17.0.6/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/3.0.0/i18nextXHRBackend.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/3.0.1/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+    <script src="assets/js/fcsjs.js?v=245"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+    <!--<script type="application/javascript">-->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAPzUobkAIPQhZCzwkEw70Qc_bFA7BBIYo",
+            authDomain: "floodcitisense.firebaseapp.com",
+            databaseURL: "https://floodcitisense.firebaseio.com",
+            projectId: "floodcitisense",
+            storageBucket: "floodcitisense.appspot.com",
+            messagingSenderId: "526829940303",
+            appId: "1:526829940303:web:a654a9f2013ad4df"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <script src="http://api.ipify.org/?format=jsonp&callback=get_viewers_ip">
+    </script>
+    <script>
+        {
+            //page init
+            var infoWindow, selSensorName, chartOfJS, chartOfJSBig, selRow, selectTr;
+            var markerCluster;
+            var markers = [];
+            var zoomLevel = 2;
+            var lastFilterLength = -1;
+            var start = moment().tz('Europe/London').subtract(7, 'days');
+            var end = moment().tz('Europe/London').subtract(0, 'days');
+            //var site_prefix = 'http://118.163.199.193:14480/istsos/';
+            var site_prefix = 'https://tech.fondus.com.tw:14481/istsos/';
+            var url = 'https://api.floodcitisense.eu/';
+            var lastMapHeight = 0;
+            var mapHeightPadding = 120;
+            var table;
+        }
+
+        function langChangeAnchor(lng) {
+            initNav();
+            if (sessionStorage.getItem('fcs_page_views_count') != null) {
+                $('#fcsCounter').html('&nbsp;' + i18next.t('sidemenu.visitors') + "：" + sessionStorage.getItem('fcs_page_views_count'));
+            }
+            $('body').localize();
+            $('#pageTitle').localize();
+            try { $('#divFooter').localize(); $('#modalAbout').localize(); } catch (ex) { };
+
+            //var lngUrl = 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/English.json';
+            //if (lng) {
+            //    if (lng == 'fr') { lngUrl = 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/French.json'; }
+            //    else if (lng == 'nl') { lngUrl = 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Dutch.json'; }
+            //    else if (lng == 'el') { lngUrl = 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Greek.json'; }
+            //}
+            try {
+                if (table)
+                    table.destroy();
+                table = $('#maintable').DataTable({
+                    'pagingType': "full_numbers",
+                    'lengthMenu': [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]],
+                    displayLength: 15,
+                    retrieve: true,
+                    responsive: true,
+                    scrollY: '70vh',
+                    select: true,
+                    scrollCollapse: true,
+                    sLengthMenu: "Display _MENU_ records",
+                    paging: true,
+                    language: {
+                        "sEmptyTable": i18next.t('table.sInfoEmpty'),
+                        "sInfo": i18next.t('table.sInfo'),
+                        "sInfoEmpty": i18next.t('table.sInfoEmpty'),
+                        "sInfoFiltered": i18next.t('table.sInfoFiltered'),
+                        "sInfoPostFix": i18next.t('table.sInfoPostFix'),
+                        "sInfoThousands": i18next.t('table.sInfoThousands'),
+                        "sLengthMenu": i18next.t('table.sLengthMenu'),
+                        "sLoadingRecords": i18next.t('table.sLoadingRecords'),
+                        "sProcessing": i18next.t('table.sProcessing'),
+                        "sSearch": i18next.t('table.sSearch'),
+                        "sZeroRecords": i18next.t('table.sZeroRecords'),
+                        "oAria": {
+                            "sSortAscending": i18next.t('table.oAria.sSortAscending'),
+                            "sSortDescending": i18next.t('table.oAria.sSortDescending')
+                        },
+                        search: '_INPUT_',
+                        paginate: {
+                            "first": '<i class="fa fa-backward"></i>',
+                            "last": '<i class="fa fa-forward"></i>',
+                            "next": '<i class="fa fa-step-forward"></i>',
+                            "previous": '<i class="fa fa-step-backward"></i>'
+                        }
+                    },
+                    'columns': [
+                        { data: 'Type' },
+                        { data: 'SensorID' },
+                        { data: null },
+                        { data: 'TypeID' }
+                    ]
+                    ,
+                    'rowCallback': function (row, data, index) {
+                        var color = 'orange';
+                        var gType = i18next.t('sensor.filter.fcs');
+                        if (data.TypeID == 'ea') {
+                            color = 'green';
+                            gType = i18next.t('sensor.filter.ea');
+                        }
+                        else if (data.TypeID == 'na') {
+                            color = 'blue';
+                            gType = i18next.t('sensor.filter.na');
+                        }
+                        else if (data.TypeID == 'kn') {
+                            color = '#E355EC';
+                            gType = i18next.t('sensor.filter.kn');
+                        }
+                        else if (data.TypeID == 'flowbru') {
+                            color = '#cccc00';
+                            gType = i18next.t('sensor.filter.flowbru');
+                        }
+
+
+                        $('td:eq(0)', row).css('color', color).html(gType);
+                        $('td:eq(2)', row).html(
+                            '<button class="btn btn-round btn-info btn-icon btn-sm like"><i class="fas fa-map-marked-alt" data-toggle="tooltip" data-placement="bottom" title="' + i18next.t('btn.locate') + '" ></i></button>');
+                    }, 'columnDefs': [{
+                        'targets': [2],
+                        'data': null,
+                        'orderable': false,
+                        'defaultContent': ''
+                        //+'<a href="#" class="btn btn-round btn-warning btn-icon btn-sm edit"><i class="fas fa-chart-bar"></i></a>'
+                    },
+                    {
+                        'targets': [3],
+                        'visible': false
+                    }
+                    ]
+                });
+
+            }
+            catch (e) {
+                console.log(e);
+            }
+            table.on('search.dt', function () {
+                if (lastFilterLength != table.rows({ filter: 'applied' }).nodes().length) {
+                    lastFilterLength = table.rows({ filter: 'applied' }).nodes().length;
+                    drawSensorMap(table.rows({ filter: 'applied' }).data());
+                    if (selectTr != null) {
+                        selectTr.removeClass('selected');
+                        selectTr = null;
+                    }
+                    selRow = null;
+                }
+            });
+            $('#cboSensorType').on('change', function (e) {
+                e.preventDefault();
+                if ($('#cboSensorType').val() == '0' || $('#cboSensorType').val() == '-1') {
+                    table.columns().search('').draw();
+                }
+                else {
+                    table.columns(3).search($('#cboSensorType').val())
+                        .draw();
+                }
+                return false;
+            });
+            table.on('click', '.btn-info', function (e) {
+                e.preventDefault();
+                if (selectTr != null) {
+                    selectTr.removeClass('selected');
+                    selectTr = null;
+                }
+                selRow = null;
+                selectTr = $(this).parents('tr');
+                selectTr.addClass('selected');
+                selRow = table.row($(this).parents('tr')).data();
+                //gtag('event', 'view_sensor', {
+                //    'event_category': selRow.Type,
+                //    'event_label': selRow.SensorID
+                //});
+                map.setCenter({ lat: selRow.y, lng: selRow.x });
+                map.setZoom(18);
+                for (var i in markers) {
+                    if (markers[i].cusX == selRow.x && markers[i].cusY == selRow.y && markers[i].cusName == selRow.SensorID) {
+                        new google.maps.event.trigger(markers[i], 'click');
+                        break;
+                    }
+                }
+                return false;
+            });
+            $('#fcsDefault').addClass('active');
+            $('#goOther').html(i18next.t('smpn.msg.view') + ' ' + i18next.t('sidemenu.floodMenu1') + ' ' + i18next.t('sidemenu.floodMenu2'));
+            $('#cboSensorType option[value="-1"]').html(i18next.t('sensor.filter.allReduce'));
+            $('#cboSensorType option[value="0"]').html(i18next.t('sensor.filter.all'));
+            $('#cboSensorType option[value="fcs"]').html(i18next.t('sensor.filter.fcs'));
+            $('#cboSensorType option[value="ea"]').html(i18next.t('sensor.filter.ea'));
+            $('#cboSensorType option[value="kn"]').html(i18next.t('sensor.filter.kn'));
+            $('#cboSensorType option[value="na"]').html(i18next.t('sensor.filter.na'));
+            $('#cboSensorType option[value="flowbru"]').html(i18next.t('sensor.filter.flowbru'));
+
+            $("#cboSensorType").selectpicker('refresh');
+            $("#cboSensorType").trigger("change");
+            adjustMapTableHeight();
+
+            var data = sessionStorage.getItem('fcs_sensordata');
+            if (data != null) {
+                var sensorData = JSON.parse(data);
+                table.rows().remove();
+                table.rows.add(sensorData);
+                table.columns.adjust().draw();
+                drawSensorMap(sensorData);
+                $('#loading_table').hide();
+            }
+            else {
+                loadGauges();
+            }
+        }
+        function changeSearchLabel(table, newLabel) {
+            var input = $(table + "_filter > label > input").detach();
+            $(table + "_filter > label").html(newLabel).append(input);
+        }
+        /**
+        * Init Google Map and adjust Map&Table height;
+        */
+        function initMap() {
+            $('#loading_table').show();
+            mpos = { lat: 52.4419775, lng: -1.9326545 };
+            map = new google.maps.Map(document.getElementById('map'), {
+                mapTypeControl: false,
+                center: mpos,
+                zoom: 7
+            });
+            var contentString =
+                '<div class="chart-container">' +
+                '    <canvas id="chartZone"></canvas>' +
+                '</div>' +
+                '<div id="chart_btn2" style="width:600px;">' +
+                '    <div class="input-group mb-3">' +
+                '        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;width:50%;">' +
+                '           <img src = "images/calendar.png" /> &nbsp;' +
+                '               <span id="spantitvl"></span> <img src="images/triangle.png" />' +
+                '        </div >' +
+                '        <select class="custom-select" id="opt3" onchange="loadGaugeSingleData();">' +
+                '            <option value="P1DT" selected="selected">Daily</option>' +
+                '        </select>' +
+                '        <img src = "images/chart.png" id="btnBigChart" title="Open Big Chart" onMouseOver="this.style.cursor=\'pointer\'" onclick="openBigChart();"/>' +
+                '        <img src = "images/csvex.png" id="btnExport" title="Export Data" style="margin-left:3px;height:37px;"   onMouseOver="this.style.cursor=\'pointer\'" onclick="exportCSV();"/>' +
+                '    </div>' +
+                '</div>'
+                ;
+
+            infoWindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            google.maps.event.addListener(infoWindow, 'domready', function () {
+                start = moment().tz('Europe/London').subtract(7, 'days');
+                end = moment().tz('Europe/London').subtract(0, 'days'); //default open select opt is last week
+                var dateRanges = new Array();
+                dateRanges[i18next.t('range.last24Hours')] = [moment().tz('Europe/London').subtract(1, 'days'), moment().tz('Europe/London').subtract(0, 'days')];
+                dateRanges[i18next.t('range.last3Days')] = [moment().tz('Europe/London').subtract(3, 'days'), moment().tz('Europe/London').subtract(0, 'days')];
+                dateRanges[i18next.t('range.lastWeek')] = [moment().tz('Europe/London').subtract(7, 'days'), moment().tz('Europe/London').subtract(0, 'days')];
+                dateRanges[i18next.t('range.last4Weeks')] = [moment().tz('Europe/London').subtract(7 * 4, 'days'), moment().tz('Europe/London').subtract(0, 'days')];
+                dateRanges[i18next.t('range.last3Months')] = [moment().tz('Europe/London').subtract(3, 'month').startOf('month'), moment().tz('Europe/London').subtract(0, 'days')];
+                $('#reportrange').daterangepicker({
+                    startDate: start,
+                    endDate: end,
+                    locale: {
+                        "customRangeLabel": i18next.t('range.customRange')
+                    },
+                    ranges: dateRanges
+                }, cb);
+                cb(start, end);
+            });
+            map.setCenter(mpos);
+
+            map.addListener('zoom_changed', function () {
+                var i, prevZoomLevel;
+                prevZoomLevel = zoomLevel;
+                if (map.getZoom() <= 5) {
+                    zoomLevel = 1;
+                }
+                else if (map.getZoom() > 5 && map.getZoom() <= 7) {
+                    zoomLevel = 2;
+                }
+                else if (map.getZoom() > 7 && map.getZoom() <= 9) {
+                    zoomLevel = 3;
+                }
+                else {
+                    zoomLevel = 4;
+                }
+
+                if (prevZoomLevel !== zoomLevel) {
+                    for (i = 0; i < markers.length; i++) {
+                        if (map.getZoom() <= 5) {
+                            markers[i].setIcon(markers[i].iconLevel1);
+                        }
+                        else if (map.getZoom() > 5 && map.getZoom() <= 7) {
+                            markers[i].setIcon(markers[i].iconLevel2);
+                        }
+                        else if (map.getZoom() > 7 && map.getZoom() <= 9) {
+                            markers[i].setIcon(markers[i].iconLevel3);
+                        }
+                        else {
+                            markers[i].setIcon(markers[i].iconLevel4);
+                        }
+                    }
+                }
+            });
+            initI18next();
+        }
+
+        /**
+        * Adjust Map&Table Height when windows resize
+        */
+        function adjustMapTableHeight() {
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - mapHeightPadding;
+            if (lastMapHeight != h) {
+                h = h < 600 ? 600 : h;
+                lastMapHeight = h;
+
+                $('#map').css("height", lastMapHeight + "px");
+                $('.dataTables_scrollBody').css('height', (lastMapHeight - $('#fcsTableHeader').height - $('#fcsTableToolbar').height) + "px");
+                if (table)
+                    table.draw();
+            }
+        }
+
+        $(document).ready(function () {
+            $('#fcsFooter').load("FCSFooter.html", function () {
+                try { $('#divFooter').localize(); } catch (ex) { };
+            });
+            $('#fcsAbout').load("FCSAbout.html", function () {
+                try { $('#modalAbout').localize(); } catch (ex) { };
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $(window).resize(function () {
+                if (this.resizeTO) clearTimeout(this.resizeTO);
+                this.resizeTO = setTimeout(function () {
+                    adjustMapTableHeight();
+                }, 200);
+            });
+
+            $('#goOther').on('click', function (e) {
+                e.preventDefault();
+                window.location.href = "Incident.html";
+                return false
+            });
+            $('.fixed-plugin a').click(function (event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+                    else if (window.event) {
+                        window.event.cancelBubble = true;
+                    }
+                }
+            });
+
+            $('input[type=radio][name=maptypeRadios]').change(function () {
+                //alert(this.value);hybrid
+                map.setMapTypeId(this.value);
+            });
+            $("input[type=radio][name=maptypeRadios][value='roadmap']").prop("checked", true);
+        });
+
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var sel = true;
+                if ($('#cboSensorType').val() == '-1') {
+                    if (data[3] == 'na') {
+                        sel = false;
+                    }
+                }
+                return sel;
+            }
+        );
+
+        function drawSensorMap(data) {
+            deleteMarkers();
+            var iconLevei1 = 'images/pink-circular-blank00.png';
+            var iconLevel2 = 'images/orange-blank_2.png';
+            var iconLevel3 = 'images/orange-blank_3.png';
+            var iconLevel4 = 'images/orange-blank.png';
+            var lastLatLng;
+            for (var i in data) {
+                var r = data[i];
+                var latLng = new google.maps.LatLng(r.y, r.x);
+
+                if (r.TypeID == 'ea') {
+                    //current count:22
+                    iconLevel2 = 'images/grn-blank_2.png';
+                    iconLevel3 = 'images/grn-blank_3.png';
+                    iconLevel4 = 'images/grn-blank.png';
+                }
+                else if (r.TypeID == 'na') {
+                    //current count:281
+                    iconLevel2 = 'images/blu-blank_2.png';
+                    iconLevel3 = 'images/blu-blank_3.png';
+                    iconLevel4 = 'images/blu-blank.png';
+                }
+                else if (r.TypeID == 'kn') {
+                    //current count:50
+                    iconLevel2 = 'images/pink-blank_2.png';
+                    iconLevel3 = 'images/pink-blank_3.png';
+                    iconLevel4 = 'images/pink-blank.png';
+                }
+                else if (r.TypeID == 'flowbru') {
+                    //current count:50
+                    iconLevel2 = 'images/ylw-blank_2.png';
+                    iconLevel3 = 'images/ylw-blank_3.png';
+                    iconLevel4 = 'images/ylw-blank.png';
+                }
+                else {
+                    //current count:29
+                    iconLevel2 = 'images/orange-blank_2.png';
+                    iconLevel3 = 'images/orange-blank_3.png';
+                    iconLevel4 = 'images/orange-blank.png';
+                }
+                var iconLvl = iconLevel2;
+                if (zoomLevel == 1) { iconLvl = iconLevel1 }
+                else if (zoomLevel == 2) { iconLvl = iconLevel2 }
+                else if (zoomLevel == 3) { iconLvl = iconLevel3 }
+                else if (zoomLevel == 4) { iconLvl = iconLevel4 }
+                //iconLvl = iconLevel4;
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    icon: iconLvl,
+                    map: map,
+                    cusName: r.SensorID,
+                    cusX: r.x,
+                    cusY: r.y
+                });
+
+                marker.iconLevel1 = iconLevei1;
+                marker.iconLevel2 = iconLevel2;
+                marker.iconLevel3 = iconLevel3;
+                marker.iconLevel4 = iconLevel4;
+                lastLatLng = latLng;
+                google.maps.event.addListener(marker, 'click', function () {
+                    selSensorName = this.cusName;
+                    infoWindow.open(map, this);
+                    var tempRow = null;
+                    var tempRr = null;
+                    var tempIdx = -1;
+                    //console.log(table.rows({filter: 'applied' }).nodes().length + ',' + table.rows({filter: 'applied' }).data().length);
+                    for (var i in table.rows({ filter: 'applied' }).data()) {
+                        if (this.cusName == table.rows({ filter: 'applied' }).data()[i].SensorID) {
+                            tempRow = table.rows({ filter: 'applied' }).data()[i];
+                            tempRr = table.rows({ filter: 'applied' }).nodes()[i];
+                            tempIdx = i;
+                            break;
+                        }
+                    }
+
+                    if (selRow != tempRow) {
+                        if (selectTr != null) {
+                            selectTr.removeClass('selected');
+                            selectTr = null;
+                        }
+                        selRow = null;
+                        selRow = tempRow;
+                        selectTr = $(tempRr);
+                        $(tempRr).addClass('selected');
+                        if (table.page.info().length != -1 && tempIdx != -1) {
+                            var pageIdx = parseInt(tempIdx / table.page.info().length, 10);
+                            table.page(pageIdx).draw('page');
+                        }
+                    }
+                });
+                markers.push(marker);
+            }
+            //console.log(data.length + "," + markers.length);
+            //markerCluster = null;
+            //markerCluster = new MarkerClusterer(map, markers,
+            //    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+            //markerCluster.setMaxZoom(17);
+            //markerCluster.setGridSize(200);
+
+            //google.maps.event.addListener(markerCluster, "click", function (c) {
+            //    console.log("&mdash;Number of managed markers in cluster: " + c.getSize());
+            //    console.log(map.getZoom());
+            //    //var m = c.getMarkers();
+            //    //var p = [];
+            //    //for (var i = 0; i < m.length; i++) {
+            //    //    p.push(m[i].getPosition());
+            //    //}
+            //    //console.log("&mdash;Locations of managed markers: " + p.join(", "));
+            //    //if (map.getZoom() >= 21) {
+            //    //    if (c.getSize() > 0) {
+            //    //        console.log(c.getMarkers()[0]);
+            //    //        new google.maps.event.trigger(c.getMarkers()[0], 'click');
+            //    //    }
+            //    //}
+            //});
+            //markerCluster = new MarkerClusterer(map, arr, {
+            //    gridSize: 50,
+            //    maxZoom: 15,
+            //    zoomOnClick: true,
+            //    styles: imgArr,
+            //    imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'
+            //});
+        }
+
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+        function loadGauges() {
+            var urlstr = site_prefix + 'wa/istsos/services/ensuf/procedures/operations/geojson';
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                data: {
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        table.rows().remove();
+                        var sensorData = new Array();
+                        for (var i in r.features) {
+                            if (r.features[i].geometry.type = 'Point' && r.features[i].geometry.coordinates[0] < 180 && r.features[i].geometry.coordinates[1] < 180) {
+                                var gauge = new Object();
+                                var gType = i18next.t('sensor.filter.fcs');
+                                var gTypeID = 'fcs';
+                                if (r.features[i].properties.name.toString().substr(0, 2).toLowerCase() == 'ea') { gType = i18next.t('sensor.filter.ea'); gTypeID = 'ea'; }
+                                else if (r.features[i].properties.name.toString().substr(0, 2).toLowerCase() == 'kn') { gType = i18next.t('sensor.filter.kn'); gTypeID = 'kn'; }
+                                else if (r.features[i].properties.name.toString().substr(0, 2).toLowerCase() == 'na') { gType = i18next.t('sensor.filter.na'); gTypeID = 'na'; }
+                                else if (r.features[i].properties.name.toString().substr(0, 7).toLowerCase() == 'flowbru') { gType = i18next.t('sensor.filter.flowbru'); gTypeID = 'flowbru'; }
+
+                                gauge.Type = gType;
+                                gauge.TypeID = gTypeID;
+                                gauge.SensorID = r.features[i].properties.name;
+                                gauge.x = r.features[i].geometry.coordinates[0];
+                                gauge.y = r.features[i].geometry.coordinates[1];
+                                //table.row.add(gauge).draw(false);
+                                if (r.features[i].properties.name.toString().substr(0, 2).toLowerCase() != 'na') {
+                                    sensorData.push(gauge);
+                                }
+                                //table.columns.adjust().draw();
+                                //if (gauge.SensorID == 'DCv2-c28_birmingham' || gauge.SensorID == 'DCv2-c18_birmingham') {
+                                //    console.log(gauge);
+                                //}
+
+                            }
+                        }
+                        table.rows.add(sensorData);
+                        table.columns.adjust().draw();
+                        drawSensorMap(sensorData);
+                        sessionStorage.setItem("fcs_sensordata", JSON.stringify(sensorData));
+                        $('#loading_table').hide();
+                    }
+                    catch (ex) {
+                        console.log(ex);
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr);
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                }
+
+            });
+        }
+
+        function openBigChart() {
+            $('#bigChart').modal();
+            return false;
+        }
+
+        function cb(st, et) {
+            if (et > moment().tz('Europe/London').subtract(0, 'days')) {
+                et = moment().tz('Europe/London').subtract(0, 'days');
+            }
+            if (st > moment().tz('Europe/London').subtract(0, 'days')) {
+                st = moment().tz('Europe/London').subtract(0, 'days');
+            }
+            //console.log(st.tz('Europe/London').format('YYYY/MM/DD HH:mm')+ ' - ' +et.tz('Europe/London').format('YYYY/MM/DD HH:mm'))
+            $('#spantitvl').html(st.tz('Europe/London').format('YYYY/MM/DD') + ' - ' + et.tz('Europe/London').format('YYYY/MM/DD'));
+            $('#opt3').find('option').remove().end();
+            var dateDiff = et.diff(st, 'days');
+
+            if (dateDiff <= 1) {
+                //$('#opt3').append($("<option></option>").attr("value", "P1DT").text(i18next.t('range.daily'))).attr("selected", "selected");
+                $('#opt3').append($("<option></option>").attr("value", "PT1H").text(i18next.t('range.hourly'))).attr("selected", "selected");
+            }
+            else if (dateDiff > 1 && dateDiff <= 3) {
+                $('#opt3').append($("<option></option>").attr("value", "P1DT").text(i18next.t('range.daily'))).attr("selected", "selected");
+                $('#opt3').append($("<option></option>").attr("value", "PT1H").text(i18next.t('range.hourly')));
+            }
+            else if (dateDiff > 3 && dateDiff < 28) {
+                $('#opt3').append($("<option></option>").attr("value", "P1DT").text(i18next.t('range.daily'))).attr("selected", "selected");
+            }
+            else if (dateDiff >= 28) {
+                $('#opt3').append($("<option></option>").attr("value", "P1DT").text(i18next.t('range.daily'))).attr("selected", "selected");
+                $('#opt3').append($("<option></option>").attr("value", "P7DT").text(i18next.t('range.weekly')));
+            }
+            start = st;
+            end = et;
+            loadGaugeSingleData();
+        }
+
+        function clearChart() {
+            if (chartOfJS != null || chartOfJS == 'undefined') {
+                chartOfJS.destroy();
+            }
+            if (chartOfJSBig != null || chartOfJSBig == 'undefined') {
+                chartOfJSBig.destroy();
+            }
+        }
+
+        function initChart(charTitle, arrLabel, arrData, arrBgC, arrBC) {
+            clearChart();
+            $('#charTitle').html(charTitle);
+            chartOfJS = new Chart($("#chartZone"), {
+                type: 'bar',
+                data: {
+                    labels: arrLabel,
+                    datasets: [{
+                        label: charTitle,
+                        data: arrData,
+                        backgroundColor: arrBgC,
+                        borderColor: arrBC,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            chartOfJSBig = new Chart($("#chartZoneBig"), {
+                type: 'bar',
+                data: {
+                    labels: arrLabel,
+                    datasets: [{
+                        label: charTitle,
+                        data: arrData,
+                        backgroundColor: arrBgC,
+                        borderColor: arrBC,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        function exportCSV() {
+            var dateDiff = end.diff(start, 'days');
+            var urlstr = site_prefix + 'ensuf';
+            var etime = "";
+            var gInterval = $("#opt3").val();
+            var etemp = moment(end).tz('Europe/London').format();
+            var mEnd, mStart;
+            if (gInterval == 'PT1H') {
+                mEnd = moment(etemp.substr(0, 13) + ":01:00" + etemp.substring(19, etemp.length));
+                mStart = moment(etemp.substr(0, 13) + ":00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                //if (parseInt(etemp.substr(11, 2), 10) < 12) {
+                //    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1, 'days');
+                //    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1 - dateDiff, 'days');
+                //}
+                //else {
+                //    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length));
+                //    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                //}
+            }
+            else {
+                if (parseInt(etemp.substr(11, 2), 10) < 12) {
+                    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1, 'days');
+                    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1 - dateDiff, 'days');
+                }
+                else {
+                    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length));
+                    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                }
+            }
+            etime = mStart.tz('Europe/London').format() + "/" + mEnd.tz('Europe/London').format();
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                data: {
+                    service: 'SOS',
+                    version: '1.0.0',
+                    request: 'GetObservation',
+                    offering: 'temporary',
+                    procedure: selSensorName,
+                    eventTime: etime,
+                    observedProperty: 'rainfall',
+                    responseFormat: 'text/plain',
+                    aggregateFunction: 'SUM',
+                    aggregateInterval: gInterval
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        download(r, 'RainfallData_FCS_[' + selSensorName + '].csv', 'text/csv;encoding:utf-8');
+                    }
+                    catch (ex) {
+                        setTimeout(function () { fcsAlert('', i18next.t('sensor.table.column.sensorID') + ':' + selSensorName + ' ' + i18next.t('sensor.map.warning.noRainfallData'), 'warning'); }, 500);
+                        console.log(ex);
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                }
+            });
+            return false;
+        }
+        var download = function (content, fileName, mimeType) {
+            var a = document.createElement('a');
+            mimeType = mimeType || 'application/octet-stream';
+
+            if (navigator.msSaveBlob) { // IE10
+                navigator.msSaveBlob(new Blob([content], {
+                    type: mimeType
+                }), fileName);
+            } else if (URL && 'download' in a) { //html5 A[download]
+                a.href = URL.createObjectURL(new Blob([content], {
+                    type: mimeType
+                }));
+                a.setAttribute('download', fileName);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
+            }
+        }
+
+        function loadGaugeSingleData() {
+            //clearChart();
+            var dateDiff = end.diff(start, 'days');
+            var urlstr = site_prefix + 'ensuf';
+            var etime = "";
+            var gInterval = $("#opt3").val();
+            var etemp = moment(end).tz('Europe/London').format();
+            var mEnd, mStart;
+            //console.log('CurrentTime:'+moment().tz('Europe/London').format('YYYY/MM/DD HH:mm'))
+            if (gInterval == 'PT1H') {
+                mEnd = moment(etemp.substr(0, 13) + ":01:00" + etemp.substring(19, etemp.length));
+                mStart = moment(etemp.substr(0, 13) + ":00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                //console.log(mStart.tz('Europe/London').format('YYYY/MM/DD HH:mm') + ' - ' + mEnd.tz('Europe/London').format('YYYY/MM/DD HH:mm'));
+                //if (parseInt(etemp.substr(11, 2), 10) < 12) {
+                //    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1, 'days');
+                //    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1 - dateDiff, 'days');
+                //}
+                //else {
+                //    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length));
+                //    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                //}
+            }
+            else {
+                if (parseInt(etemp.substr(11, 2), 10) < 12) {
+                    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1, 'days');
+                    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-1 - dateDiff, 'days');
+                }
+                else {
+                    mEnd = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length));
+                    mStart = moment(etemp.substr(0, 11) + "12:00:00" + etemp.substring(19, etemp.length)).add(-dateDiff, 'days');
+                }
+                //console.log(mStart.tz('Europe/London').format('YYYY/MM/DD HH:mm') + ' - ' + mEnd.tz('Europe/London').format('YYYY/MM/DD HH:mm'));
+            }
+            etime = mStart.tz('Europe/London').format() + "/" + mEnd.tz('Europe/London').format();
+            //console.log('Sent2Api:'+etime);
+            $.ajax({
+                url: urlstr,
+                "async": true,
+                "crossDomain": true,
+                data: {
+                    service: 'SOS',
+                    version: '1.0.0',
+                    request: 'GetObservation',
+                    offering: 'temporary',
+                    procedure: selSensorName,
+                    eventTime: etime,
+                    observedProperty: 'rainfall',
+                    responseFormat: 'application/json',
+                    aggregateFunction: 'SUM',
+                    aggregateInterval: gInterval
+                },
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (r) {
+                    try {
+                        var chartTitle = i18next.t('sensor.map.chart.title') + ':' + selSensorName;
+                        var arrLabel = new Array();
+                        var arrData = new Array();
+                        var arrBg = new Array();
+                        var arrBg2 = new Array();
+                        var cr = 'rgba(30,144,255';
+                        var crBgC = (cr + ', 0.2)');
+                        var crBC = (cr + ', 1)');
+                        //console.log(r.ObservationCollection.member[0].result.DataArray.values);
+                        if (gInterval == 'PT1H') {
+                            for (i = 1; i <= dateDiff * 24; i++) {
+                                var tempDate = moment.utc(mStart).add(i, 'hours');
+                                var tempVal = 0;
+                                for (var j in r.ObservationCollection.member[0].result.DataArray.values) {
+                                    if (moment.utc(tempDate).format() == moment.utc(new Date(r.ObservationCollection.member[0].result.DataArray.values[j][0])).format()) {
+                                        tempVal = r.ObservationCollection.member[0].result.DataArray.values[j][1];
+                                        break;
+                                    }
+                                }
+
+                                arrLabel.push(moment(tempDate).tz('Europe/London').format("YYYY/MM/DD-HH:mm"));
+                                arrData.push(parseFloat(tempVal) < 0 ? 0 : parseFloat(tempVal));
+                                arrBg.push(crBgC);
+                                arrBg2.push(crBC);
+                            }
+                            initChart(chartTitle, arrLabel, arrData, arrBg, arrBg2);
+                        }
+                        else if (gInterval == 'P1DT') {
+                            for (i = 1; i <= dateDiff; i++) {
+                                var tempDate = moment.utc(mStart).add(i, 'days');
+                                var tempVal = 0;
+                                for (var j in r.ObservationCollection.member[0].result.DataArray.values) {
+                                    if (moment.utc(tempDate).format() == moment.utc(new Date(r.ObservationCollection.member[0].result.DataArray.values[j][0])).format()) {
+                                        tempVal = r.ObservationCollection.member[0].result.DataArray.values[j][1];
+                                        break;
+                                    }
+                                }
+                                arrLabel.push(moment(tempDate).tz('Europe/London').format("YYYY/MM/DD-HH:mm"));
+                                arrData.push(parseFloat(tempVal) < 0 ? 0 : parseFloat(tempVal));
+                                arrBg.push(crBgC);
+                                arrBg2.push(crBC);
+                            }
+                            initChart(chartTitle, arrLabel, arrData, arrBg, arrBg2);
+                        }
+                        else if (gInterval == 'P7DT') {
+                            for (i = 1; i <= parseInt(dateDiff / 7); i++) {
+                                var tempDate = moment.utc(mStart).add(i * 7, 'days');
+                                var tempVal = 0;
+                                for (var j in r.ObservationCollection.member[0].result.DataArray.values) {
+                                    if (moment.utc(tempDate).format() == moment.utc(new Date(r.ObservationCollection.member[0].result.DataArray.values[j][0])).format()) {
+                                        tempVal = r.ObservationCollection.member[0].result.DataArray.values[j][1];
+                                        break;
+                                    }
+                                }
+                                arrLabel.push(moment(tempDate).tz('Europe/London').format("YYYY/MM/DD-HH:mm"));
+                                arrData.push(parseFloat(tempVal) < 0 ? 0 : parseFloat(tempVal));
+                                arrBg.push(crBgC);
+                                arrBg2.push(crBC);
+                            }
+                            initChart(chartTitle, arrLabel, arrData, arrBg, arrBg2);
+                        }
+                    }
+                    catch (ex) {
+                        infoWindow.close();
+                        setTimeout(function () {
+                            fcsAlert('Sensor Map', i18next.t('sensor.table.column.sensorID') + ':' + selSensorName + ' ' + i18next.t('sensor.map.warning.noRainfallData'), 'warning');
+                        }, 500);
+                        console.log(ex);
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(ajaxOptions);
+                    console.log(thrownError);
+                }
+            });
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZvwaIH10Bf51PUyUdd7oSuaVwB0EGeq4&callback=initMap&v=3&amp;sensor=false">
+    </script>
+</body>
+</html>
